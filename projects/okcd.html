@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ok computer cd — lillian pulaski</title>
+    <link rel="icon" href="../photos/icon3.svg">
+    <link rel="stylesheet" href="../gd.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        .project-banner {
+            background-color: var(--color-text);
+            padding: 120px 60px 64px;
+        }
+
+        .project-banner-inner {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.55);
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: lowercase;
+            margin-bottom: 36px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover { color: #fff; }
+
+        .back-link svg {
+            width: 14px; height: 14px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        .project-title {
+            font-family: var(--font-display);
+            font-size: clamp(40px, 8vw, 96px);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 0.95;
+            color: #fff;
+            margin-bottom: 24px;
+        }
+
+        .project-desc {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            max-width: 560px;
+            line-height: 1.65;
+        }
+
+        .project-date {
+            font-family: var(--font-display);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 16px;
+        }
+
+        .strip-section {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 56px 0 0;
+        }
+
+        .strip-section:last-of-type {
+            padding-bottom: 100px;
+        }
+
+        .strip-label-line {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0 60px;
+            margin-bottom: 20px;
+        }
+
+        .strip-label-line span {
+            font-family: var(--font-display);
+            font-size: 11px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-text-secondary);
+            white-space: nowrap;
+        }
+
+        .strip-label-line::after {
+            content: '';
+            display: block;
+            flex: 1;
+            height: 1px;
+            background: var(--color-text-secondary);
+            opacity: 0.25;
+        }
+
+        .img-strip {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 0 60px 16px;
+            /* hide scrollbar in all browsers */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .img-strip::-webkit-scrollbar {
+            display: none;
+        }
+
+        .strip-img {
+            flex: 0 0 auto;
+            height: 460px;
+            width: auto;
+            overflow: hidden;
+            cursor: default;
+        }
+
+        .strip-img img {
+            height: 100%;
+            width: auto;
+            display: block;
+        }
+
+        .footer { background-color: var(--color-text) !important; border-top: none; padding: 14px 60px !important; }
+        .footer-text { color: rgba(255,255,255,0.6) !important; font-weight: 900 !important; font-family: var(--font-display) !important; }
+        .footer-icon-link { color: rgba(255,255,255,0.6) !important; }
+        .footer-icon-link:hover { color: white !important; }
+        .footer-icon { width: 20px; height: 20px; font-size: 20px !important; }
+        .footer-right { gap: 16px !important; }
+
+        @media (max-width: 768px) {
+            .project-banner             { padding: 100px 30px 48px; }
+            .strip-section              { padding-top: 40px; }
+            .strip-section:last-of-type { padding-bottom: 72px; }
+            .strip-label-line,
+            .img-strip                  { padding-left: 30px; padding-right: 30px; }
+            .strip-img                  { height: 280px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="nav-name">lillian pulaski</div>
+            <div class="nav-links">
+                <a href="../gd.html" class="nav-link nav-link--active">graphic design</a>
+                <a href="../technical.html" class="nav-link">technical projects</a>
+                <a href="../resume.html" class="nav-link">resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blue banner -->
+    <div class="project-banner">
+        <div class="project-banner-inner">
+            <a href="../gd.html" class="back-link">
+                <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                back to graphic design
+            </a>
+            <h1 class="project-title">ok computer cd case</h1>
+            <p class="project-date">MARCH 2025</p>
+            <p class="project-desc">A full CD package redesign for Radiohead's including a jewel case, foldable poster, and disc art exploring the album's themes of technology and alienation.</p>
+        </div>
+    </div>
+
+
+    <!-- Strip 2: Prototype / product photos -->
+    <div class="strip-section">
+        <div class="img-strip">
+            <div class="strip-img">
+                <img src="../photos/cd-side.jpg" alt="Ok Computer CD Side">
+            </div>
+            <div class="strip-img">
+                <img src="../photos/cd-inside.jpg" alt="Ok Computer CD Interior">
+            </div>
+            <div class="strip-img">
+                <img src="../photos/cd-cover.jpg" alt="Ok Computer CD Front">
+            </div>
+        </div>
+    </div>
+
+    <!-- Strip 1: Design files -->
+    <div class="strip-section">
+        <div class="img-strip">
+            <div class="strip-img">
+                <img src="../photos/okcd_poster.png" alt="Ok Computer CD Poster">
+            </div>
+            <div class="strip-img">
+                <img src="../photos/lpulaski_okcd_FRONT.jpg" alt="CD Cover Front">
+            </div>
+            <div class="strip-img">
+                <img src="../photos/okcd_BACK+SIDES.png" alt="CD Back and Sides">
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <p class="footer-text">lillian pulaski 2026</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.linkedin.com/in/lillian-pulaski-b7491a246/" class="footer-link footer-icon-link" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin footer-icon"></i>
+                </a>
+                <a href="https://github.com/lillian-pulaski" class="footer-link footer-icon-link" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github footer-icon"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>technical projects — lillian pulaski</title>
+    <link rel="icon" href="photos/icon3.svg">
+    <link rel="stylesheet" href="gd.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        /* ─────────────────────────────────────────
+           PROJECTS BAND
+        ───────────────────────────────────────── */
+        .projects-band {
+            background-color: #fff;
+            padding: 64px 0 80px;
+        }
+
+        .projects-band-inner {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .projects-band-title {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 4vw, 52px);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            color: var(--color-text);
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .projects-band-inner > p {
+            color: var(--color-text-secondary);
+            font-family: var(--font-display);
+            font-size: 13px;
+            letter-spacing: 0.08em;
+            margin-bottom: 48px;
+        }
+
+        /* 2-column grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            align-items: start;
+        }
+
+        @media (max-width: 700px) { .projects-grid { grid-template-columns: 1fr; } }
+
+        /* ── Card ── */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card-img {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 3px;
+            background: #e8e8f0;
+        }
+
+        /* first card image is clickable */
+        .project-card--lightbox .project-card-img {
+            cursor: zoom-in;
+        }
+
+        .project-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 3px;
+        }
+
+        .project-card-body {
+            padding: 14px 2px 0;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        
+
+        .project-card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .project-card-title {
+            font-family: var(--font-text);
+            font-size: clamp(30px, 1.2vw, 10px);
+            font-weight: bold;
+            letter-spacing: -0.01em;
+            color: var(--color-text);
+            line-height: 1.1;
+            text-transform: none;
+        }
+
+
+        .project-card-github {
+            flex-shrink: 0;
+            color: var(--color-text-secondary);
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.2s, transform 0.2s;
+            margin-top: 1px;
+        }
+
+        .project-card-github:hover {
+            color: var(--color-text);
+            transform: scale(1.15);
+        }
+
+        /* ── Description text — matches resume .resume-entry-detail ── */
+        .project-card-desc {
+            font-size: 14px;
+            font-weight: normal;
+            color: var(--color-text);
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+        
+
+        .project-card-desc ul {
+            margin: 8px 0 0 16px;
+            padding: 0;
+        }
+
+        .project-card-desc li {
+            margin-bottom: 2px;
+        }
+
+        /* ── View Repository Button — matches resume .project-btn / .contact-btn ── */
+        .project-card-footer {
+            margin-top: 16px;
+        }
+
+        .btn-repo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 22px;
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.02em;
+            transition: background-color 0.25s ease, color 0.25s ease;
+            cursor: pointer;
+        }
+
+        .btn-repo:hover {
+            background-color: #667eea;
+            color: white;
+        }
+
+        .btn-repo i {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            color: #667eea;
+            font-size: 15px;
+            transition: color 0.25s ease;
+        }
+
+        .btn-repo:hover i {
+            color: white;
+        }
+
+        .btn-repo-label {
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        /* ─────────────────────────────────────────
+           LIGHTBOX CAROUSEL
+        ───────────────────────────────────────── */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .lb-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.94);
+            cursor: zoom-out;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+
+        .lb-frame {
+            position: relative;
+            z-index: 1;
+            max-width: min(90vw, 1100px);
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: scale(0.94);
+            transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+        }
+
+        .lightbox.open .lb-frame { transform: scale(1); }
+
+        .lb-frame img {
+            max-width: 100%;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 24px 80px rgba(102, 126, 234, 0.18);
+        }
+
+        .lb-close {
+            position: fixed;
+            top: 20px; right: 28px;
+            background: none; border: none;
+            color: var(--color-text);
+            font-family: var(--font-display);
+            font-size: 28px; font-weight: 900;
+            cursor: pointer; z-index: 2; opacity: 0.5; line-height: 1;
+            transition: opacity 0.2s, transform 0.25s;
+        }
+
+        .lb-close:hover { opacity: 1; transform: rotate(90deg); }
+
+        .lb-prev, .lb-next {
+            position: fixed;
+            top: 50%; transform: translateY(-50%);
+            background: none;
+            border: 2px solid var(--color-text-secondary);
+            color: var(--color-text);
+            font-size: 16px; width: 48px; height: 48px;
+            cursor: pointer; z-index: 2;
+            display: flex; align-items: center; justify-content: center;
+            transition: border-color 0.2s, background 0.2s;
+            font-family: var(--font-display); font-weight: 900;
+            border-radius: 50%;
+        }
+
+        .lb-prev { left: 20px; }
+        .lb-next { right: 20px; }
+
+        .lb-prev:hover, .lb-next:hover {
+            border-color: var(--color-text);
+            background: rgba(102, 126, 234, 0.08);
+        }
+
+        .lb-counter {
+            position: fixed; bottom: 24px;
+            left: 50%; transform: translateX(-50%);
+            font-family: var(--font-display);
+            font-size: 11px; letter-spacing: 0.2em;
+            color: var(--color-text-secondary);
+            z-index: 2; white-space: nowrap;
+        }
+
+        /* ─────────────────────────────────────────
+           RESPONSIVE
+        ───────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .projects-band-inner { padding: 0 30px; }
+            .lb-prev { left: 8px; }
+            .lb-next { right: 8px; }
+        }
+
+        /* blue footer */
+        .footer { background-color: var(--color-text) !important; border-top: none; padding: 14px 60px !important; }
+        .footer-text { color: rgba(255,255,255,0.6) !important; font-weight: 900 !important; font-family: var(--font-display) !important; }
+        .footer-icon-link { color: rgba(255,255,255,0.6) !important; }
+        .footer-icon-link:hover { color: white !important; }
+        .footer-icon { width: 20px; height: 20px; font-size: 20px !important; }
+        .footer-right { gap: 16px !important; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="nav-name">lillian pulaski</div>
+            <div class="nav-links">
+                <a href="gd.html" class="nav-link">graphic design</a>
+                <a href="technical.html" class="nav-link nav-link--active">technical projects</a>
+                <a href="resume.html" class="nav-link">resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="name-container">
+                <h1 class="name">
+                    <span class="name-line">lillian</span>
+                    <span class="name-line highlight">pulaski</span>
+                </h1>
+                <div class="portfolio-title">technical projects</div>
+            </div>
+        </div>
+    </section>
+
+    
+    <iframe src="pdfs/resume_lillian-pulaski.pdf"> width= </iframe>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <p class="footer-text">lillian pulaski 2026</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.linkedin.com/in/lillian-pulaski-b7491a246/" class="footer-link footer-icon-link" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin footer-icon"></i>
+                </a>
+                <a href="https://github.com/lillian-pulaski" class="footer-link footer-icon-link" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github footer-icon"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ── Lightbox carousel (card 1 only) ──
+        const lightbox  = document.getElementById('lightbox');
+        const lbImg     = document.getElementById('lb-img');
+        const lbCounter = document.getElementById('lb-counter');
+        let slides  = [];
+        let current = 0;
+
+        // Read slide list from data-slides on the first card's img
+        const card1Img = document.querySelector('.project-card--lightbox .project-card-img img');
+        if (card1Img) {
+            try {
+                slides = JSON.parse(card1Img.getAttribute('data-slides') || '[]');
+            } catch(e) {}
+            if (!slides.length && card1Img.src) slides = [card1Img.src];
+        }
+
+        function openLb(index) {
+            current = ((index % slides.length) + slides.length) % slides.length;
+            lbImg.src = slides[current];
+            lbCounter.textContent = (current + 1) + ' / ' + slides.length;
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLb() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+            setTimeout(() => { lbImg.src = ''; }, 300);
+        }
+
+        function prevSlide() { openLb(current - 1); }
+        function nextSlide() { openLb(current + 1); }
+
+        // Click on card 1 image opens lightbox
+        const card1Wrap = document.querySelector('.project-card--lightbox .project-card-img');
+        if (card1Wrap) card1Wrap.addEventListener('click', () => openLb(0));
+
+        document.getElementById('lb-backdrop').addEventListener('click', closeLb);
+        document.getElementById('lb-close').addEventListener('click', closeLb);
+        document.getElementById('lb-prev').addEventListener('click', prevSlide);
+        document.getElementById('lb-next').addEventListener('click', nextSlide);
+
+        document.addEventListener('keydown', e => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape')     closeLb();
+            if (e.key === 'ArrowLeft')  prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+    </script>
+</body>
+</html>

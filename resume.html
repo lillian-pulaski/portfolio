@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lillian pulaski — resume</title>
+    <link rel="icon" href="photos/icon3.svg">
+    <link rel="stylesheet" href="gd.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        /* ── Hero ── */
+        .resume-hero   { min-height: 50vh; }
+        .resume-name   { text-align: right; }
+
+        .resume-title-bar {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: clamp(36px, 7vw, 72px);
+            letter-spacing: -0.02em;
+            line-height: 1;
+            color: var(--color-text);
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        /* ── Section label bars ── */
+        .resume-label-bar {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 20px;
+            letter-spacing: -0.01em;
+            background-color: var(--color-text);
+            color: var(--color-bg);
+            display: block;
+            padding: 8px 22px;
+            margin-bottom: 12px;
+        }
+
+        .resume-block { margin-bottom: 0; }
+
+        /* ── Buttons ── */
+        .project-buttons,
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .project-btn,
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 22px;
+            width: 100%;
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.02em;
+            transition: background-color 0.25s ease, color 0.25s ease;
+            cursor: pointer;
+        }
+
+        .project-btn:hover,
+        .contact-btn:hover {
+            background-color: #667eea;
+            color: white;
+        }
+
+        .project-btn-icon,
+        .contact-btn-icon {
+            flex-shrink: 0;
+            width: auto;
+            font-size: 20px;
+            line-height: 1;
+            color: #667eea;
+            transition: color 0.25s ease;
+        }
+
+        .project-btn:hover .project-btn-icon,
+        .contact-btn:hover .contact-btn-icon {
+            color: white;
+        }
+
+        /* ── PDF layout ── */
+        .resume-pdf-section {
+            padding: 60px 60px 100px;
+        }
+
+        .resume-pdf-inner {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 48px;
+            align-items: start;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .pdf-viewer-wrap {
+            border: 2px solid var(--color-text);
+            overflow: hidden;
+            aspect-ratio: 8.5 / 11;
+            background: #ffffff;
+        }
+
+        .pdf-viewer-wrap iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            background: #ffffff;
+        }
+
+        /* ── Sidebar ── */
+        .resume-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            position: sticky;
+            top: 100px;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background-color: var(--color-text) !important;
+            padding: 14px 60px !important;
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.6) !important;
+            font-weight: 900 !important;
+            font-family: var(--font-display) !important;
+        }
+
+        .footer-icon-link { color: rgba(255,255,255,0.6) !important; font-size: 20px; }
+        .footer-icon-link:hover { color: white !important; }
+        .footer-right { gap: 16px !important; }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .resume-pdf-section { padding: 40px 30px 80px; }
+            .resume-pdf-inner { grid-template-columns: 1fr; }
+            .resume-sidebar { position: static; }
+        }
+
+        @media (max-width: 768px) {
+            .resume-hero { min-height: 40vh; }
+            .resume-title-bar { font-size: clamp(28px, 6vw, 48px); }
+            .resume-label-bar { font-size: 17px; padding: 8px 18px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="nav-name">lillian pulaski</div>
+            <div class="nav-links">
+                <a href="gd.html" class="nav-link">graphic design</a>
+                <a href="technical.html" class="nav-link">technical projects</a>
+                <a href="resume.html" class="nav-link nav-link--active">resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero resume-hero">
+        <div class="hero-content">
+            <div class="name-container">
+                <h1 class="name resume-name">
+                    <span class="name-line">lillian</span>
+                    <span class="name-line highlight">pulaski</span>
+                </h1>
+                <div class="resume-title-bar">resume</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF + Sidebar -->
+    <div class="resume-pdf-section">
+        <div class="resume-pdf-inner">
+
+            <!-- PDF viewer -->
+            <div class="pdf-viewer-wrap">
+                <iframe src="pdfs/lillian-pulaski-resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" title="Lillian Pulaski Resume"></iframe>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="resume-sidebar">
+
+                <!-- Download -->
+                <section class="resume-block">
+                    <div class="resume-label-bar">download</div>
+                    <div class="project-buttons">
+                        <a href="pdfs/lillian-pulaski-resume.pdf" class="project-btn" download>
+                            <i class="fa-solid fa-download project-btn-icon"></i>
+                            <span>Download Resume PDF</span>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- View My Work -->
+                <section class="resume-block">
+                    <div class="resume-label-bar">view my work</div>
+                    <div class="project-buttons">
+                        <a href="gd.html" class="project-btn">
+                            <i class="fa-solid fa-pen-nib project-btn-icon"></i>
+                            <span>Graphic Design Portfolio</span>
+                        </a>
+                        <a href="technical.html" class="project-btn">
+                            <i class="fa-solid fa-code project-btn-icon"></i>
+                            <span>Technical Projects</span>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Contact -->
+                <section class="resume-block">
+                    <div class="resume-label-bar">contact</div>
+                    <div class="contact-buttons">
+                        <a href="https://www.linkedin.com/in/lillian-pulaski-b7491a246/" class="contact-btn" target="_blank">
+                            <i class="fab fa-linkedin contact-btn-icon"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/lillian-pulaski" class="contact-btn" target="_blank">
+                            <i class="fab fa-github contact-btn-icon"></i>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <p class="footer-text">lillian pulaski 2026</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.linkedin.com/in/lillian-pulaski-b7491a246/" class="footer-link footer-icon-link" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin footer-icon"></i>
+                </a>
+                <a href="https://github.com/lillian-pulaski" class="footer-link footer-icon-link" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github footer-icon"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>long story short — lillian pulaski</title>
+    <link rel="icon" href="../photos/icon3.svg">
+    <link rel="stylesheet" href="../gd.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        /* ─────────────────────────────────────────
+           PROJECT HEADER BANNER
+        ───────────────────────────────────────── */
+        .project-banner {
+            background-color: var(--color-text);
+            padding: 120px 60px 64px;
+        }
+
+        .project-banner-inner {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.55);
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: lowercase;
+            margin-bottom: 36px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover { color: #fff; }
+
+        .back-link svg {
+            width: 14px; height: 14px;
+            stroke: currentColor; fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        .project-title {
+            font-family: var(--font-display);
+            font-size: clamp(40px, 8vw, 96px);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 0.95;
+            color: #fff;
+            margin-bottom: 24px;
+        }
+
+        .project-desc {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            max-width: 560px;
+            line-height: 1.65;
+        }
+
+        .project-date {
+            font-family: var(--font-display);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 16px;
+        }
+
+        /* ─────────────────────────────────────────
+           IMAGE STRIP SECTIONS
+        ───────────────────────────────────────── */
+        .strip-section {
+            padding: 56px 0 0;
+        }
+
+        .strip-section:last-of-type {
+            padding-bottom: 60px;
+        }
+
+        .strip-inner {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .strip-label-line {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .strip-label-line span {
+            font-family: var(--font-display);
+            font-size: 11px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-text-secondary);
+            white-space: nowrap;
+        }
+
+        .strip-label-line::after {
+            content: '';
+            display: block;
+            flex: 1;
+            height: 1px;
+            background: var(--color-text-secondary);
+            opacity: 0.25;
+        }
+
+        /* blue footer */
+        .footer { background-color: var(--color-text) !important; border-top: none; padding: 14px 60px !important; }
+        .footer-text { color: rgba(255,255,255,0.6) !important; font-weight: 900 !important; font-family: var(--font-display) !important; }
+        .footer-icon-link { color: rgba(255,255,255,0.6) !important; }
+        .footer-icon-link:hover { color: white !important; }
+        .footer-icon { width: 20px; height: 20px; font-size: 20px !important; }
+        .footer-right { gap: 16px !important; }
+
+        /* fit all images to strip height, no scroll */
+        .img-strip {
+            display: flex;
+            gap: 2px;
+            align-items: normal;
+            overflow: hidden;
+            height: 75vh;
+        }
+
+        .strip-img {
+            flex: 1 1 0;
+            min-width: 0;
+            overflow: hidden;
+            cursor: default;
+        }
+
+        .strip-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+        }
+
+        /* ─────────────────────────────────────────
+           RESPONSIVE
+        ───────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .project-banner             { padding: 100px 30px 48px; }
+            .strip-section              { padding-top: 40px; }
+            .strip-section:last-of-type { padding-bottom: 72px; }
+            .strip-inner                { padding: 0 30px; }
+            .img-strip                  { height: 50vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="nav-name">lillian pulaski</div>
+            <div class="nav-links">
+                <a href="../gd.html" class="nav-link nav-link--active">graphic design</a>
+                <a href="../technical.html" class="nav-link">technical projects</a>
+                <a href="../resume.html" class="nav-link">resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blue banner -->
+    <div class="project-banner">
+        <div class="project-banner-inner">
+            <a href="../gd.html" class="back-link">
+                <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                back to graphic design
+            </a>
+            
+            <h1 class="project-title">long story short</h1>
+            <p class="project-date">NOVEMBER 2024</p>
+            <p class="project-desc">Multi panel composition displaying my life story using only three hues and two typefaces. Reflects themes of my upbringing, family dynamics, and learned mindsets.</p>
+        </div>
+    </div>
+
+    <!-- Row 1 -->
+    <div class="strip-section">
+        <div class="strip-inner">
+            <div class="img-strip">
+                <div class="strip-img"><img src="../photos/lss-p8.png" alt="Panel 8"></div>
+                <div class="strip-img"><img src="../photos/lss-p2.png" alt="Panel 2"></div>
+                <div class="strip-img"><img src="../photos/lss-p1.png" alt="Panel 1"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="strip-section">
+        <div class="strip-inner">
+            <div class="img-strip">
+                <div class="strip-img"><img src="../photos/lss-p5.png" alt="Panel 5"></div>
+                <div class="strip-img"><img src="../photos/lss-p6.png" alt="Panel 6"></div>
+                <div class="strip-img"><img src="../photos/lss-p9.png" alt="Panel 9"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <p class="footer-text">lillian pulaski 2026</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.linkedin.com/in/lillian-pulaski-b7491a246/" class="footer-link footer-icon-link" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin footer-icon"></i>
+                </a>
+                <a href="https://github.com/lillian-pulaski" class="footer-link footer-icon-link" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github footer-icon"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

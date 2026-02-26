@@ -1,0 +1,449 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-text: #667eea;
+    --color-bg: #ffffff;
+    --color-text-secondary: #bfc8f2;
+    
+    --font-display: 'Archivo Black', sans-serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+::selection {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+}
+
+/* Navigation */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 20px 60px;
+    background-color: var(--color-bg);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.nav-links {
+    display: flex;
+    gap: 50px;
+}
+
+.nav-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-text-secondary);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    padding: 60px 40px;
+}
+
+.name-container {
+    margin-bottom: 40px;
+}
+
+.name {
+    font-family: var(--font-display);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+}
+
+/* right-align "lillian" on the portfolio hero — highlight bar keeps its own text-align */
+.index-name {
+    text-align: right;
+}
+
+.name-line {
+    display: block;
+    font-size: clamp(80px, 18vw, 220px);
+}
+
+.name-line.highlight {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    padding: 0 40px;
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    text-align: left;
+    box-sizing: border-box;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+    padding-left: 40px;
+}
+
+.subtitle-wrapper {
+    margin-top: 40px;
+}
+
+.subtitle {
+    font-size: 24px;
+    letter-spacing: 0.2em;
+    color: var(--color-text);
+    margin-bottom: 8px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.subtitle-secondary {
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    color: var(--color-text-secondary);
+    font-weight: 400;
+}
+
+/* page subtitle below the name — mirrors resume-title-bar */
+.portfolio-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(36px, 7vw, 72px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--color-text);
+    text-align: right;
+    margin-top: 20px;
+}
+
+/* Featured Section */
+.featured {
+    padding: 120px 60px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.section-header {
+    margin-bottom: 80px;
+}
+
+.section-title {
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: var(--color-text-secondary);
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.section-line {
+    width: 100px;
+    height: 1px;
+    background: var(--color-text);
+}
+
+/* Work Grid */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+}
+
+.work-item {
+    grid-column: span 4;
+    transition: opacity 0.3s ease;
+}
+
+.work-item:hover {
+    opacity: 0.7;
+}
+
+.work-item.large {
+    grid-column: span 8;
+}
+
+.work-item.wide {
+    grid-column: span 6;
+}
+
+/* Image Strip: horizontal scroll for multiple images */
+.work-image-strip {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-text) transparent;
+    margin-bottom: 24px;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px; /* keep scrollbar from clipping */
+}
+
+.work-image-strip::-webkit-scrollbar {
+    height: 4px;
+}
+
+.work-image-strip::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.work-image-strip::-webkit-scrollbar-thumb {
+    background: var(--color-text-secondary);
+    border-radius: 0px;
+}
+
+.work-image-strip::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text);
+}
+
+/* Each image frame inside the strip */
+.work-image {
+    flex: 0 0 auto;
+    width: 220px;
+    aspect-ratio: 3 / 4;   /* portrait */
+    overflow: hidden;
+    background: var(--color-bg);
+}
+
+/* If there's only one image, let it stretch to fill */
+.work-image-strip:has(> :only-child) > .work-image {
+    width: 100%;
+    flex: 1 1 auto;
+}
+
+.work-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--color-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholder-text {
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: var(--color-text-secondary);
+}
+
+.work-info {
+    padding: 0 4px;
+}
+
+.work-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.work-category {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--color-text-secondary);
+}
+
+/* Footer */
+.footer {
+    background-color: solid var(--color-text);
+    color: #667eea;
+    padding: 28px 60px;
+}
+
+.footer-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-text {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--color-bg);
+}
+
+.footer-right {
+    display: flex;
+    gap: 40px;
+}
+
+.footer-link {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--color-bg);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--color-text-secondary);
+}
+
+/* Shared: active nav link */
+.nav-link--active {
+    color: var(--color-text-secondary) !important;
+}
+
+/* Shared: footer icon links */
+.footer-icon-link {
+    font-size: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+    transition: color 0.3s ease;
+}
+
+.footer-icon-link:hover {
+    color: var(--color-text-secondary);
+}
+
+.footer-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .work-grid {
+        grid-template-columns: repeat(8, 1fr);
+    }
+    
+    .work-item {
+        grid-column: span 4;
+    }
+    
+    .work-item.large,
+    .work-item.wide {
+        grid-column: span 8;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        padding: 15px 30px;
+    }
+    
+    .nav-content {
+        gap: 30px;
+    }
+    
+    .nav-name {
+        font-size: 16px;
+    }
+    
+    .nav-links {
+        gap: 30px;
+    }
+    
+    .nav-link {
+        font-size: 16px;
+    }
+    
+    .name-line {
+        font-size: clamp(50px, 14vw, 120px);
+    }
+    
+    .name-line.highlight {
+        padding: 0 20px;
+        padding-left: 20px;
+    }
+    
+    .subtitle {
+        font-size: 16px;
+    }
+    
+    .subtitle-secondary {
+        font-size: 12px;
+    }
+    
+    .featured {
+        padding: 80px 30px;
+    }
+    
+    .work-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .work-item,
+    .work-item.large,
+    .work-item.wide {
+        grid-column: span 1;
+    }
+
+    .work-image {
+        width: 160px;
+    }
+
+    .work-image-strip:has(> :only-child) > .work-image {
+        width: 100%;
+    }
+    
+    .footer {
+        padding: 20px 30px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .footer-right {
+        gap: 30px;
+    }
+}

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>graphic design — lillian pulaski</title>
+    <link rel="icon" href="photos/icon3.svg">
+    <link rel="stylesheet" href="gd.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        /* ─────────────────────────────────────────
+           FEATURED STRIP — blue full-bleed band
+        ───────────────────────────────────────── */
+        .featured-band {
+            background-color: var(--color-text);
+            padding: 48px 0 56px;
+        }
+
+        .featured-band-inner {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .featured-band-title {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 4vw, 52px);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            color: #fff;
+            text-align: right;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .featured-band-inner > p {
+            color: rgba(255, 255, 255, 0.55);
+            font-family: var(--font-text);
+            font-size: 16px;
+            font-weight: normal;
+            text-align: right;
+            margin-bottom: 28px;
+        }
+
+        .featured-row {
+            display: flex;
+            gap: 16px;
+            justify-content: flex-end;
+            align-items: flex-end;
+            height: 520px;
+        }
+
+        .featured-card {
+            height: 100%;
+            width: auto;
+            display: block;
+            text-decoration: none;
+            overflow: visible;
+            flex-shrink: 0;
+            transition: height 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .featured-card:hover {
+            height: calc(100% + 10px);
+        }
+
+        .featured-card img {
+            height: 100%;
+            width: auto;
+            display: block;
+            border-radius: 3px;
+            transition: height 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        opacity 0.4s ease;
+        }
+
+        /* ─────────────────────────────────────────
+           MASONRY GRID
+        ───────────────────────────────────────── */
+        .gd-grid {
+            padding: 56px 60px 100px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .gd-grid-label {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .gd-grid-label span {
+            font-family: var(--font-display);
+            font-size: 11px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-text-secondary);
+            white-space: nowrap;
+        }
+
+        .gd-grid-label::after {
+            content: '';
+            display: block;
+            flex: 1;
+            height: 1px;
+            background: var(--color-text-secondary);
+            opacity: 0.25;
+        }
+
+        .masonry {
+            columns: 3;
+            column-gap: 16px;
+        }
+
+        @media (max-width: 1200px) { .masonry { columns: 2; } }
+        @media (max-width: 600px)  { .masonry { columns: 1; } }
+
+        .thumb {
+            break-inside: avoid;
+            margin-bottom: 16px;
+            display: block;
+            border-radius: 3px;
+            cursor: pointer;
+            animation: gdFadeUp 0.5s ease both;
+        }
+
+        .thumb img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 3px;
+            transition: opacity 0.4s ease;
+        }
+
+
+        @keyframes gdFadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .thumb--gif img {
+            aspect-ratio: 6 / 3;
+            object-fit: cover;
+            height: auto;
+        }
+
+        .thumb:hover img {
+            opacity: 0.9;
+        }
+
+        /* ─────────────────────────────────────────
+           INLINE CAPTION
+        ───────────────────────────────────────── */
+        .thumb-caption {
+            background: var(--color-text);
+            border-radius: 3px;
+            padding: 0 16px;
+            max-height: 0;
+            overflow: hidden;
+            margin-top: 0;
+            width: 100%;
+            transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        padding 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        margin-top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .thumb.active .thumb-caption {
+            max-height: 120px;
+            padding: 14px 16px 16px;
+            margin-top: 10px;
+        }
+
+        .thumb-caption-title {
+            font-family: var(--font-display);
+            font-size: 15px;
+            font-weight: 900;
+            letter-spacing: -0.01em;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        /*
+        .thumb-caption-title::before {
+            content: '';
+            display: inline-block;
+            width: 18px;
+            height: 14px;
+            flex-shrink: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60'%3E%3Cpolygon points='0,15 55,15 55,0 100,30 55,60 55,45 0,45' fill='white'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        */
+
+        .thumb-caption-desc {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* ─────────────────────────────────────────
+           RESPONSIVE
+        ───────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .featured-band-inner    { padding: 0 30px; }
+            .featured-row           { flex-direction: column; height: auto; }
+            .featured-card          { height: 280px; width: 100%; }
+            .featured-card img      { width: 100%; height: 100%; object-fit: cover; }
+            .featured-card:hover    { height: calc(280px + 24px); }
+            .gd-grid                { padding: 40px 30px 80px; }
+        }
+
+        /* blue footer */
+        .footer { background-color: var(--color-text) !important; border-top: none; padding: 14px 60px !important; }
+        .footer-text { color: rgba(255,255,255,0.6) !important; font-weight: 900 !important; font-family: var(--font-display) !important; }
+        .footer-icon-link { color: rgba(255,255,255,0.6) !important; }
+        .footer-icon-link:hover { color: white !important; }
+        .footer-icon { width: 20px; height: 20px; font-size: 20px !important; }
+        .footer-right { gap: 16px !important; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="nav-name">lillian pulaski</div>
+            <div class="nav-links">
+                <a href="gd.html" class="nav-link nav-link--active">graphic design</a>
+                <a href="technical.html" class="nav-link">technical projects</a>
+                <a href="resume.html" class="nav-link">resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="name-container">
+                <h1 class="name">
+                    <span class="name-line">lillian</span>
+                    <span class="name-line highlight">pulaski</span>
+                </h1>
+                <div class="portfolio-title">graphic design</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Featured projects — blue band ── -->
+    <div class="featured-band">
+        <div class="featured-band-inner">
+            <h2 class="featured-band-title">featured projects</h2>
+            <p>click on project pages to see them in detail</p>
+            <div class="featured-row">
+                <a href="projects/okcd.html" class="featured-card">
+                    <img src="photos/okcd_poster.png" alt="Ok Computer CD">
+                </a>
+                <a href="projects/helvetica.html" class="featured-card">
+                    <img src="photos/300_P4_Pulaski_Specimen_Page_01.jpg" alt="Helvetica Booklet">
+                </a>
+                <a href="projects/lss.html" class="featured-card">
+                    <img src="photos/lss-p8.png" alt="Long Story Short Composition">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Rest of work — masonry ── -->
+    <div class="gd-grid">
+        <div class="masonry" id="masonry">
+            <div class="thumb"
+                 data-title="South Park Poster"
+                 data-desc="Hand-lettered poster design inspired by the South Park visual identity. Experimental typography meets irreverent illustration."
+                 style="animation-delay:0.04s">
+                <img src="photos/sp_poster.png" alt="South Park Poster">
+                <div class="thumb-caption">
+                    <div class="thumb-caption-title">South Park Poster</div>
+                    <p class="thumb-caption-desc">APRIL 2025</p>
+                    <p class="thumb-caption-desc">Satirical advertisement poster based on the South Park episode "Christmas Snow," poking fun at legalization of recreational drugs and misleading marketing tactics.</p>
+                </div>
+            </div>
+            <div class="thumb thumb--gif"
+                 style="animation-delay:0.08s">
+                <img src="photos/300_P2_Pulaski_Word1_Rigid.gif" alt="Rigid GIF">
+                <div class="thumb-caption">
+                    <div class="thumb-caption-title">Kinetic Typography — Rigid</div>
+                    <p class="thumb-caption-desc">OCTOBER 2025</p>
+                    <p class="thumb-caption-desc">An exploration of how motion design reinforces meaning through the transformation of uppercase to lowercase letterforms. Animated two opposing concepts to demonstrate how motion amplifies type.</p>
+                </div>
+            </div>
+            <div class="thumb thumb--gif"
+                 style="animation-delay:0.12s">
+                <img src="photos/300_P2_Pulaski_Word2_Fluid.gif" alt="Fluid GIF">
+                <div class="thumb-caption">
+                    <div class="thumb-caption-title">Kinetic Typography — Fluid</div>
+                    <p class="thumb-caption-desc">OCTOBER 2025</p>
+                    <p class="thumb-caption-desc">An exploration of how motion design reinforces meaning through the transformation of uppercase to lowercase letterforms. Animated two opposing concepts to demonstrate how motion amplifies type.</p>
+                </div>
+            </div>
+            <div class="thumb"
+                 style="animation-delay:0.16s">
+                <img src="photos/nhwm_poster.png" alt="NH White Mountains Poster">
+                <div class="thumb-caption">
+                    <div class="thumb-caption-title">White Mountains Travel Poster</div>
+                    <p class="thumb-caption-desc">FEBRUARY 2025</p>
+                    <p class="thumb-caption-desc">Vintage-inspired travel poster advertising the location and showcasing the natural beauty of New Hampshire's White Mountains.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <p class="footer-text">lillian pulaski 2026</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.linkedin.com/in/lillian-pulaski-b7491a246/" class="footer-link footer-icon-link" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin footer-icon"></i>
+                </a>
+                <a href="https://github.com/lillian-pulaski" class="footer-link footer-icon-link" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github footer-icon"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const thumbs = Array.from(document.querySelectorAll('.thumb'));
+
+        thumbs.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                const isActive = thumb.classList.contains('active');
+                // close all others
+                thumbs.forEach(t => t.classList.remove('active'));
+                // toggle this one
+                if (!isActive) thumb.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
