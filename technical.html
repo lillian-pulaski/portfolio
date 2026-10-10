@@ -3,303 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>technical projects — lillian pulaski</title>
+    <title>technical projects</title>
     <link rel="icon" href="photos/icon3.svg">
-    <link rel="stylesheet" href="gd.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
 
-        /* ─────────────────────────────────────────
-           PROJECTS BAND
-        ───────────────────────────────────────── */
-        .projects-band {
-            background-color: #fff;
-            padding: 64px 0 80px;
-        }
-
-        .projects-band-inner {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 0 60px;
-        }
-
-        .projects-band-title {
-            font-family: var(--font-display);
-            font-size: clamp(28px, 4vw, 52px);
-            font-weight: 900;
-            letter-spacing: -0.02em;
-            color: var(--color-text);
-            margin-bottom: 10px;
-            line-height: 1;
-        }
-
-        .projects-band-inner > p {
-            color: var(--color-text-secondary);
-            font-family: var(--font-display);
-            font-size: 13px;
-            letter-spacing: 0.08em;
-            margin-bottom: 48px;
-        }
-
-        /* 2-column grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
-            align-items: start;
-        }
-
-        @media (max-width: 700px) { .projects-grid { grid-template-columns: 1fr; } }
-
-        /* ── Card ── */
-        .project-card {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card-img {
-            width: 100%;
-            overflow: hidden;
-            border-radius: 3px;
-            background: #e8e8f0;
-        }
-
-        /* first card image is clickable */
-        .project-card--lightbox .project-card-img {
-            cursor: zoom-in;
-        }
-
-        .project-card-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            border-radius: 3px;
-        }
-
-        .project-card-body {
-            padding: 14px 2px 0;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-
-        
-
-        .project-card-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 8px;
-        }
-
-        .project-card-title {
-            font-family: var(--font-text);
-            font-size: clamp(30px, 1.2vw, 10px);
-            font-weight: bold;
-            letter-spacing: -0.01em;
-            color: var(--color-text);
-            line-height: 1.1;
-            text-transform: none;
-        }
-
-
-        .project-card-github {
-            flex-shrink: 0;
-            color: var(--color-text-secondary);
-            font-size: 20px;
-            text-decoration: none;
-            transition: color 0.2s, transform 0.2s;
-            margin-top: 1px;
-        }
-
-        .project-card-github:hover {
-            color: var(--color-text);
-            transform: scale(1.15);
-        }
-
-        /* ── Description text — matches resume .resume-entry-detail ── */
-        .project-card-desc {
-            font-size: 14px;
-            font-weight: normal;
-            color: var(--color-text);
-            line-height: 1.6;
-            opacity: 0.95;
-        }
-        
-
-        .project-card-desc ul {
-            margin: 8px 0 0 16px;
+        /* ── Hero ── */
+        .hero {
+            min-height: 0;
             padding: 0;
         }
 
-        .project-card-desc li {
-            margin-bottom: 2px;
+        .hero-content {
+            padding: 90px 54px 29px;
+            width: 100%;
         }
 
-        /* ── View Repository Button — matches resume .project-btn / .contact-btn ── */
-        .project-card-footer {
-            margin-top: 16px;
+        .name-container { margin-bottom: 0; }
+
+        .portfolio-title {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: clamp(28px, 5.5vw, 65px);
+            letter-spacing: -0.02em;
+            line-height: 1;
+            color: var(--color-text);
+            text-align: left;
+            margin: 0;
         }
 
-        .btn-repo {
+        /* ── Intro band (full-bleed) ── */
+        .intro-band {
+            background-color: var(--color-text);
+            padding: 43px 0 50px;
+            box-shadow: 0 0 0 100vmax var(--color-text);
+            clip-path: inset(0 -100vmax);
+        }
+
+        .intro-band-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 54px;
+        }
+
+        .intro-band-title {
+            font-family: var(--font-display);
+            font-size: clamp(22px, 3.5vw, 47px);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            color: #fff;
+            text-align: right;
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+
+        .intro-band-inner > p {
+            color: rgba(255,255,255,0.6);
+            font-size: 15px;
+            line-height: 1.6;
+            text-align: right;
+            margin: 0 0 0 auto;
+            max-width: 52ch;
+        }
+
+        /* ── Project list (accordion) ── */
+        .index {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 50px 54px 90px;
+        }
+
+        .index-hint {
+            font-size: 13px;
+            color: var(--color-text);
+            opacity: 0.55;
+            margin: 0 0 14px;
+        }
+
+        .proj {
+            background: #f1f3f9;
+            border-radius: 3px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            transition: background-color 0.35s ease;
+        }
+
+        .proj:hover { background: #e8ebf5; }
+
+        .proj.open,
+        .proj.open:hover { background: #e4e8f6; }
+
+        /* ── Row header / toggle button ── */
+        .proj-head {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 18px;
+            width: 100%;
+            background: none;
+            border: 0;
+            padding: 22px 26px 24px;
+            margin: 0;
+            text-align: left;
+            cursor: pointer;
+            font: inherit;
+            color: var(--color-text);
+        }
+
+        .proj-head:focus-visible {
+            outline: 3px solid var(--color-text);
+            outline-offset: -3px;
+        }
+
+        /* date shows when a project is open */
+        .proj-date {
+            display: block;
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            opacity: 0;
+            max-height: 0;
+            margin-top: 0;
+            overflow: hidden;
+            transition: opacity 0.3s ease,
+                        max-height 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        margin-top 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .proj.open .proj-date {
+            opacity: 0.5;
+            max-height: 22px;
+            margin-top: 10px;
+        }
+
+        .proj-title {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: clamp(23px, 3.4vw, 42px);
+            letter-spacing: -0.02em;
+            line-height: 1;
+            display: block;
+            transform-origin: left center;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .proj-line {
+            display: block;
+            font-size: 14px;
+            line-height: 1.5;
+            opacity: 0.6;
+            margin-top: 8px;
+            max-width: 60ch;
+        }
+
+        .proj-toggle {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: clamp(30px, 3vw, 40px);
+            line-height: 1;
+            transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .proj.open .proj-toggle { transform: rotate(45deg); }
+
+        .proj:hover .proj-title { transform: translateX(8px); }
+        .proj:hover .proj-toggle { transform: scale(1.1); }
+        .proj.open:hover .proj-toggle { transform: rotate(45deg) scale(1.1); }
+
+        /* ── Project details ── */
+        .proj-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .proj-body-inner {
+            padding: 0 26px 28px;
+            max-width: 78ch;
+            color: var(--color-text);
+        }
+
+        .proj-desc {
+            font-size: 14px;
+            line-height: 1.65;
+            margin: 0;
+            opacity: 0.85;
+        }
+
+        .proj-list {
+            margin: 14px 0 0;
+            padding: 0;
+            list-style: none;
+            font-size: 13px;
+            line-height: 1.6;
+            opacity: 0.75;
+        }
+
+        .proj-list li {
+            padding-left: 16px;
+            position: relative;
+            margin-bottom: 4px;
+        }
+
+        .proj-list li::before {
+            content: '';
+            position: absolute;
+            left: 1px;
+            top: 0.52em;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        /* ── Tool chips ── */
+        .proj-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 18px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .tool {
+            display: inline-block;
+            padding: 6px 13px;
+            border-radius: 999px;
+            background: #fff;
+            border: 1px solid rgba(102, 126, 234, 0.45);
+            color: #5566d6;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            line-height: 1.3;
+            white-space: nowrap;
+        }
+
+        /* ── Buttons ── */
+        .proj-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .btn {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 22px;
-            background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
-            border-radius: 6px;
+            gap: 9px;
+            padding: 12px 24px;
+            border-radius: 999px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            letter-spacing: 0.02em;
-            transition: background-color 0.25s ease, color 0.25s ease;
-            cursor: pointer;
-        }
-
-        .btn-repo:hover {
-            background-color: #667eea;
-            color: white;
-        }
-
-        .btn-repo i {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-            color: #667eea;
-            font-size: 15px;
-            transition: color 0.25s ease;
-        }
-
-        .btn-repo:hover i {
-            color: white;
-        }
-
-        .btn-repo-label {
-            font-size: 15px;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-        }
-
-        /* ─────────────────────────────────────────
-           LIGHTBOX CAROUSEL
-        ───────────────────────────────────────── */
-        .lightbox {
-            position: fixed;
-            inset: 0;
-            z-index: 900;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .lightbox.open {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .lb-backdrop {
-            position: absolute;
-            inset: 0;
-            background: rgba(255, 255, 255, 0.94);
-            cursor: zoom-out;
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-        }
-
-        .lb-frame {
-            position: relative;
-            z-index: 1;
-            max-width: min(90vw, 1100px);
-            max-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: scale(0.94);
-            transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
-        }
-
-        .lightbox.open .lb-frame { transform: scale(1); }
-
-        .lb-frame img {
-            max-width: 100%;
-            max-height: 90vh;
-            width: auto;
-            height: auto;
-            display: block;
-            border-radius: 8px;
-            box-shadow: 0 24px 80px rgba(102, 126, 234, 0.18);
-        }
-
-        .lb-close {
-            position: fixed;
-            top: 20px; right: 28px;
-            background: none; border: none;
-            color: var(--color-text);
             font-family: var(--font-display);
-            font-size: 28px; font-weight: 900;
-            cursor: pointer; z-index: 2; opacity: 0.5; line-height: 1;
-            transition: opacity 0.2s, transform 0.25s;
+            font-weight: 900;
+            font-size: 12px;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+            line-height: 1;
+            border: 2px solid var(--color-text);
+            background: var(--color-text);
+            color: #fff;
+            transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
         }
 
-        .lb-close:hover { opacity: 1; transform: rotate(90deg); }
+        .btn i { font-size: 15px; }
 
-        .lb-prev, .lb-next {
-            position: fixed;
-            top: 50%; transform: translateY(-50%);
-            background: none;
-            border: 2px solid var(--color-text-secondary);
-            color: var(--color-text);
-            font-size: 16px; width: 48px; height: 48px;
-            cursor: pointer; z-index: 2;
-            display: flex; align-items: center; justify-content: center;
-            transition: border-color 0.2s, background 0.2s;
-            font-family: var(--font-display); font-weight: 900;
-            border-radius: 50%;
+        .btn:hover {
+            background: #667eea;
+            border-color: #667eea;
+            transform: translateY(-2px);
         }
 
-        .lb-prev { left: 20px; }
-        .lb-next { right: 20px; }
-
-        .lb-prev:hover, .lb-next:hover {
-            border-color: var(--color-text);
-            background: rgba(102, 126, 234, 0.08);
-        }
-
-        .lb-counter {
-            position: fixed; bottom: 24px;
-            left: 50%; transform: translateX(-50%);
-            font-family: var(--font-display);
-            font-size: 11px; letter-spacing: 0.2em;
-            color: var(--color-text-secondary);
-            z-index: 2; white-space: nowrap;
-        }
-
-        /* ─────────────────────────────────────────
-           RESPONSIVE
-        ───────────────────────────────────────── */
+        /* ── Mobile ── */
         @media (max-width: 768px) {
-            .projects-band-inner { padding: 0 30px; }
-            .lb-prev { left: 8px; }
-            .lb-next { right: 8px; }
+            .hero-content { padding: 76px 20px 20px; }
+            .intro-band-inner { padding: 0 20px; }
+            .intro-band-title { font-size: 36px; }
+            .index { padding: 36px 20px 72px; }
+            .proj-head { padding: 18px 18px 20px; gap: 12px; }
+            .proj-body-inner { padding: 0 18px 22px; }
+            .btn { padding: 11px 20px; }
         }
 
-        /* blue footer */
-        .footer { background-color: var(--color-text) !important; border-top: none; padding: 14px 60px !important; }
-        .footer-text { color: rgba(255,255,255,0.6) !important; font-weight: 900 !important; font-family: var(--font-display) !important; }
+        @media (prefers-reduced-motion: reduce) {
+            .proj, .proj-title, .proj-toggle, .proj-body, .proj-date, .btn { transition: none; }
+            .proj:hover .proj-title { transform: none; }
+            .btn:hover { transform: none; }
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background-color: var(--color-text) !important;
+            border-top: none;
+            padding: 13px 54px !important;
+        }
+
+        .footer-content {
+            flex-direction: row !important;
+            align-items: center;
+            justify-content: space-between;
+            max-width: none !important;
+            width: 100%;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.6) !important;
+            font-weight: 900 !important;
+            font-family: var(--font-display) !important;
+            white-space: nowrap;
+        }
+
         .footer-icon-link { color: rgba(255,255,255,0.6) !important; }
         .footer-icon-link:hover { color: white !important; }
         .footer-icon { width: 20px; height: 20px; font-size: 20px !important; }
-        .footer-right { gap: 16px !important; }
+        .footer-right { gap: 16px !important; flex-shrink: 0; }
+
+        @media (max-width: 768px) {
+            .footer { padding: 13px 20px !important; }
+        }
     </style>
 </head>
 <body>
@@ -309,9 +339,9 @@
         <div class="nav-content">
             <div class="nav-name">lillian pulaski</div>
             <div class="nav-links">
-                <a href="gd.html" class="nav-link">graphic design</a>
+                <a href="art.html" class="nav-link">art portfolio</a>
                 <a href="technical.html" class="nav-link nav-link--active">technical projects</a>
-                <a href="resume.html" class="nav-link">resume</a>
+                <a href="about.html" class="nav-link">about</a>
             </div>
         </div>
     </nav>
@@ -320,121 +350,199 @@
     <section class="hero">
         <div class="hero-content">
             <div class="name-container">
-                <h1 class="name">
-                    <span class="name-line">lillian</span>
-                    <span class="name-line highlight">pulaski</span>
-                </h1>
                 <div class="portfolio-title">technical projects</div>
             </div>
         </div>
     </section>
 
-    <!-- ── Projects ── -->
-    <div class="projects-band">
-        <div class="projects-band-inner">
-            <div class="projects-grid">
-
-                <!-- Card 1 — lightbox carousel -->
-                <div class="project-card project-card--lightbox">
-                    <div class="project-card-img" id="card1-img">
-                        <img src="photos/Screenshot 2025-12-01 220920.png" alt="Project One"
-                             data-slides='["photos/project1.png","photos/project1b.png","photos/project1c.png"]'
-                             onerror="this.parentElement.style.minHeight='280px';this.style.display='none'">
-                    </div>
-                    <div class="project-card-body">
-                        <div class="project-card-header">
-                            <div class="project-card-title">Open-Source Content Management System (CMS) Display</div>
-                        </div>
-                        <div class="project-card-desc">Developed a full-stack Django web application for managing digital signage content on Raspberry Pi displays. The system enables administrators to upload, schedule, and display rotating content including images, announcements, and dynamic data through an automated slideshow interface.
-                            <ul>
-                                <li>Django-based CMS with role-based authentication (admin/editor permissions)</li>
-                                <li>Automated slideshow rotation with configurable timing and display control</li>
-                                <li>HDMI CEC integration for TV power scheduling via Raspberry Pi</li>
-                                <li>Custom Python web scraping for real-time weather and date/time display</li>
-                                <li>JSON API integration for external data sources (campus announcements)</li>
-                                <li>Image upload with file validation and database management</li>
-                                <li>Custom HTML slide support for flexible content creation</li>
-                            </ul>
-                        </div>
-                        <div class="project-card-footer">
-                            <a href="https://github.com/lillian-pulaski" class="btn-repo" target="_blank">
-                                <i class="fab fa-github"></i><span class="btn-repo-label">View Repository</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="project-card">
-                    <div class="project-card-img">
-                        <img src="photos/gun_mortality.png" alt="Project Two"
-                             onerror="this.parentElement.style.minHeight='280px';this.style.display='none'">
-                    </div>
-                    <div class="project-card-body">
-                        <div class="project-card-header">
-                            <div class="project-card-title">Gun-Related Mortality Analysis</div>
-                        </div>
-                        <div class="project-card-desc">A comprehensive data analysis project examining gun-related deaths in the United States (2012-2014) to identify trends, at-risk populations, and inform policy recommendations for violence prevention.</div>
-                        <div class="project-card-footer">
-                            <a href="https://github.com/lillian-pulaski" class="btn-repo" target="_blank">
-                                <i class="fab fa-github"></i><span class="btn-repo-label">View Repository</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="project-card">
-                    <div class="project-card-img">
-                        <img src="photos/cov19_voter_reg.png" alt="Project Three"
-                             onerror="this.parentElement.style.minHeight='280px';this.style.display='none'">
-                    </div>
-                    <div class="project-card-body">
-                        <div class="project-card-header">
-                            <div class="project-card-title">COVID-19 Pandemic Impact on Voter Registration</div>
-                        </div>
-                        <div class="project-card-desc">This project looks at how the COVID-19 pandemic in 2020 affected new voter registration compared to 2016. The goal is to understand how crises impact voter participation and how registration rates can be maintained during difficult times.</div>
-                        <div class="project-card-footer">
-                            <a href="https://github.com/lillian-pulaski" class="btn-repo" target="_blank">
-                                <i class="fab fa-github"></i><span class="btn-repo-label">View Repository</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="project-card">
-                    <div class="project-card-img">
-                        <img src="photos/icon3.svg" alt="Project Four"
-                             onerror="this.parentElement.style.minHeight='280px';this.style.display='none'">
-                    </div>
-                    <div class="project-card-body">
-                        <div class="project-card-header">
-                            <div class="project-card-title">Portfolio Website</div>
-                        </div>
-                        <div class="project-card-desc">A short description of what this project does, the problem it solves, and the technologies used to build it.</div>
-                        <div class="project-card-footer">
-                            <a href="https://github.com/lillian-pulaski" class="btn-repo" target="_blank">
-                                <i class="fab fa-github"></i><span class="btn-repo-label">View Repository</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+    <!-- Intro band -->
+    <div class="intro-band">
+        <div class="intro-band-inner">
+            <h2 class="intro-band-title">coding, web design, and data</h2>
+            <p>
+                from school projects to beyond
+            </p>
         </div>
     </div>
 
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
-        <div class="lb-backdrop" id="lb-backdrop"></div>
-        <div class="lb-frame">
-            <img id="lb-img" src="" alt="">
-        </div>
-        <button class="lb-close" id="lb-close" aria-label="Close">✕</button>
-        <button class="lb-prev" id="lb-prev" aria-label="Previous">&#8592;</button>
-        <button class="lb-next" id="lb-next" aria-label="Next">&#8594;</button>
-        <div class="lb-counter" id="lb-counter"></div>
+    <!-- Projects -->
+    <div class="index">
+
+        <!-- CMS -->
+        <article class="proj">
+            <button class="proj-head" aria-expanded="false" aria-controls="proj-cms">
+                <span>
+                    <span class="proj-title">open-source CMS display</span>
+                    <span class="proj-line">Digital signage for Raspberry Pi screens, built in Django</span>
+                    <span class="proj-date">2025</span>
+                </span>
+                <span class="proj-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="proj-body" id="proj-cms">
+                <div class="proj-body-inner">
+                    <p class="proj-desc">A full-stack Django application for running digital signage on Raspberry Pi displays. Administrators upload and schedule content of every kind, from images to announcements to live data, and the system rotates it through an automated slideshow.</p>
+                    <ul class="proj-list">
+                        <li>Role-based authentication separating admin and editor permissions</li>
+                        <li>Automated slideshow rotation with configurable timing and display control</li>
+                        <li>HDMI-CEC integration so the Pi powers the TV on and off on schedule</li>
+                        <li>Python scrapers pulling live weather and date/time onto the screen</li>
+                        <li>JSON API integration for outside sources, including campus announcements</li>
+                        <li>Validated image uploads managed through the database</li>
+                        <li>Support for custom HTML slides when a layout needs something specific</li>
+                    </ul>
+                    <ul class="proj-tools">
+                        <li class="tool">Django</li>
+                        <li class="tool">Python</li>
+                        <li class="tool">Raspberry Pi</li>
+                        <li class="tool">HDMI-CEC</li>
+                        <li class="tool">HTML / CSS</li>
+                    </ul>
+                    <div class="proj-actions">
+                        <a href="https://github.com/lillian-pulaski" class="btn" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i><span>Repository</span>
+                        </a>
+                        <a href="https://REPLACE-URL" class="btn" target="_blank" rel="noopener">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i><span>See it running</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Catholic Charities -->
+        <article class="proj">
+            <button class="proj-head" aria-expanded="false" aria-controls="proj-revamp">
+                <span>
+                    <span class="proj-title">catholic charities of broome county website</span>
+                    <span class="proj-line">A solo rebuild of a nonprofit's site, from brand to build</span>
+                    <span class="proj-date">2026</span>
+                </span>
+                <span class="proj-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="proj-body" id="proj-revamp">
+                <div class="proj-body-inner">
+                    <p class="proj-desc">A full revamp of an existing site for a Broome County nonprofit, handled solo from the brand work through to launch. The organization had no documented visual identity, so the project started by extracting one from what was already in use and developing a palette around it to carry that identity across the site. The rebuild focused on the things that actually keep people from finding help: navigation organized around the services offered, a layout that holds up on a phone, and clearer type and contrast throughout. Ticketing for the organization's fundraiser runs through the same site, and staff can update content without needing a developer.</p>
+                    <ul class="proj-tools">
+                        <li class="tool">Wix Studio</li>
+                    </ul>
+                    <div class="proj-actions">
+                        <a href="https://www.catholiccharitiesbc.org/" class="btn" target="_blank" rel="noopener">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i><span>Visit the site</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- White Mountains -->
+        <article class="proj">
+            <button class="proj-head" aria-expanded="false" aria-controls="proj-wm">
+                <span>
+                    <span class="proj-title">white mountains travel guide</span>
+                    <span class="proj-line">A scroll-driven guide to hiking New Hampshire</span>
+                    <span class="proj-date">2025</span>
+                </span>
+                <span class="proj-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="proj-body" id="proj-wm">
+                <div class="proj-body-inner">
+                    <p class="proj-desc">An interactive single-page travel guide to New Hampshire's White Mountains, where the route unfolds as you scroll, with each section animating in and handing off to the next using JavaScript scroll libraries.</p>
+                    <ul class="proj-tools">
+                        <li class="tool">JavaScript</li>
+                        <li class="tool">HTML / CSS</li>
+                        <li class="tool">GSAP ScrollTrigger</li>
+                    </ul>
+                    <div class="proj-actions">
+                        <a href="https://github.com/lillian-pulaski" class="btn" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i><span>Repository</span>
+                        </a>
+                        <a href="https://lillian-pulaski.github.io/wmnf-scroll/" class="btn" target="_blank" rel="noopener">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i><span>Visit the site</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Gun mortality -->
+        <article class="proj">
+            <button class="proj-head" aria-expanded="false" aria-controls="proj-gun">
+                <span>
+                    <span class="proj-title">gun-related mortality analysis</span>
+                    <span class="proj-line">Where US gun deaths concentrated, 2012–2014</span>
+                    <span class="proj-date">2024</span>
+                </span>
+                <span class="proj-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="proj-body" id="proj-gun">
+                <div class="proj-body-inner">
+                    <p class="proj-desc">An analysis of gun-related deaths in the United States between 2012 and 2014, looking for the trends underneath the total: which populations carry the most risk, where deaths concentrate, and what those patterns suggest for violence-prevention policy.</p>
+                    <ul class="proj-tools">
+                        <li class="tool">Python</li>
+                        <li class="tool">Pandas</li>
+                    </ul>
+                    <div class="proj-actions">
+                        <a href="https://github.com/lillian-pulaski" class="btn" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i><span>Repository</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- COVID voter registration -->
+        <article class="proj">
+            <button class="proj-head" aria-expanded="false" aria-controls="proj-covid">
+                <span>
+                    <span class="proj-title">covid-19 and voter registration</span>
+                    <span class="proj-line">What the 2020 pandemic did to new registrations</span>
+                    <span class="proj-date">2024</span>
+                </span>
+                <span class="proj-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="proj-body" id="proj-covid">
+                <div class="proj-body-inner">
+                    <p class="proj-desc">A comparison of new voter registration in 2020 against 2016, asking how a crisis changes participation, and what keeps registration from falling when the usual routes to it close.</p>
+                    <ul class="proj-tools">
+                        <li class="tool">Python</li>
+                        <li class="tool">Pandas</li>
+                    </ul>
+                    <div class="proj-actions">
+                        <a href="https://github.com/lillian-pulaski" class="btn" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i><span>Repository</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Portfolio site -->
+        <article class="proj">
+            <button class="proj-head" aria-expanded="false" aria-controls="proj-site">
+                <span>
+                    <span class="proj-title">this portfolio site</span>
+                    <span class="proj-line">Hand-coded, no framework, no site builder</span>
+                    <span class="proj-date">2026</span>
+                </span>
+                <span class="proj-toggle" aria-hidden="true">+</span>
+            </button>
+            <div class="proj-body" id="proj-site">
+                <div class="proj-body-inner">
+                    <p class="proj-desc">The site you're reading. Written by hand in HTML, CSS and JavaScript with no framework behind it. The type system, the full-bleed color bands and the click-to-expand pattern on this page were all built from scratch.</p>
+                    <ul class="proj-tools">
+                        <li class="tool">HTML</li>
+                        <li class="tool">CSS</li>
+                        <li class="tool">JavaScript</li>
+                    </ul>
+                    <div class="proj-actions">
+                        <a href="https://github.com/lillian-pulaski" class="btn" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i><span>Repository</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+
     </div>
 
     <!-- Footer -->
@@ -444,7 +552,7 @@
                 <p class="footer-text">lillian pulaski 2026</p>
             </div>
             <div class="footer-right">
-                <a href="https://www.linkedin.com/in/lillian-pulaski-b7491a246/" class="footer-link footer-icon-link" target="_blank" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/lillian-pulaski/" class="footer-link footer-icon-link" target="_blank" aria-label="LinkedIn">
                     <i class="fab fa-linkedin footer-icon"></i>
                 </a>
                 <a href="https://github.com/lillian-pulaski" class="footer-link footer-icon-link" target="_blank" aria-label="GitHub">
@@ -454,55 +562,6 @@
         </div>
     </footer>
 
-    <script>
-        // ── Lightbox carousel (card 1 only) ──
-        const lightbox  = document.getElementById('lightbox');
-        const lbImg     = document.getElementById('lb-img');
-        const lbCounter = document.getElementById('lb-counter');
-        let slides  = [];
-        let current = 0;
-
-        // Read slide list from data-slides on the first card's img
-        const card1Img = document.querySelector('.project-card--lightbox .project-card-img img');
-        if (card1Img) {
-            try {
-                slides = JSON.parse(card1Img.getAttribute('data-slides') || '[]');
-            } catch(e) {}
-            if (!slides.length && card1Img.src) slides = [card1Img.src];
-        }
-
-        function openLb(index) {
-            current = ((index % slides.length) + slides.length) % slides.length;
-            lbImg.src = slides[current];
-            lbCounter.textContent = (current + 1) + ' / ' + slides.length;
-            lightbox.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLb() {
-            lightbox.classList.remove('open');
-            document.body.style.overflow = '';
-            setTimeout(() => { lbImg.src = ''; }, 300);
-        }
-
-        function prevSlide() { openLb(current - 1); }
-        function nextSlide() { openLb(current + 1); }
-
-        // Click on card 1 image opens lightbox
-        const card1Wrap = document.querySelector('.project-card--lightbox .project-card-img');
-        if (card1Wrap) card1Wrap.addEventListener('click', () => openLb(0));
-
-        document.getElementById('lb-backdrop').addEventListener('click', closeLb);
-        document.getElementById('lb-close').addEventListener('click', closeLb);
-        document.getElementById('lb-prev').addEventListener('click', prevSlide);
-        document.getElementById('lb-next').addEventListener('click', nextSlide);
-
-        document.addEventListener('keydown', e => {
-            if (!lightbox.classList.contains('open')) return;
-            if (e.key === 'Escape')     closeLb();
-            if (e.key === 'ArrowLeft')  prevSlide();
-            if (e.key === 'ArrowRight') nextSlide();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
