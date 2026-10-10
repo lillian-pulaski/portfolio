@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about</title>
+    <link rel="icon" href="photos/icon3.svg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        /* ── Hero ── */
+        .hero { min-height: 0; padding: 0; }
+
+        .hero-content {
+            padding: 90px 54px 29px;
+            width: 100%;
+        }
+
+        .name-container { margin-bottom: 0; }
+
+        .portfolio-title {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: clamp(28px, 5.5vw, 65px);
+            letter-spacing: -0.02em;
+            line-height: 1;
+            color: var(--color-text);
+            text-align: left;
+            margin: 0;
+        }
+
+        /* ── Buttons ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 12px 22px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 12px;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+            line-height: 1;
+            border: 2px solid var(--color-text);
+            background: var(--color-text);
+            color: #fff;
+            transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+        }
+
+        .btn i { font-size: 15px; }
+
+        .btn:hover {
+            background: #667eea;
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .btn--big {
+            padding: 17px 32px;
+            font-size: 15px;
+            gap: 12px;
+        }
+
+        .btn--big i { font-size: 19px; }
+
+        /* ── About: text left, photo right ── */
+        .about {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 20px 54px 0;
+            overflow-x: clip;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 45%);
+            gap: 60px;
+            align-items: end;
+        }
+
+        .about-text {
+            align-self: start;
+            padding-bottom: 60px;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--color-text);
+            margin: 0 0 18px;
+            max-width: 56ch;
+        }
+
+        .about-text p:last-of-type { margin-bottom: 0; }
+
+        .about-lead {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: clamp(20px, 2.4vw, 30px) !important;
+            letter-spacing: -0.02em;
+            line-height: 1.15 !important;
+            margin-bottom: 22px !important;
+        }
+
+        .about-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .about-photo {
+            position: relative;
+            margin: 0;
+            justify-self: end;
+            width: 100%;
+            container-type: inline-size;
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* GitHub/LinkedIn buttons placed over the hands in the photo */
+        .palm-stack {
+            position: absolute;
+            bottom: 75%;
+            right: 48%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: clamp(8px, 1.7cqw, 10px);
+        }
+
+        /* sized in cqw so they scale with the photo */
+        .palm-stack .btn {
+            white-space: nowrap;
+            font-size: clamp(11px, 2.5cqw, 15px);
+            padding: clamp(12px, 2.8cqw, 17px) clamp(16px, 5.3cqw, 32px);
+            gap: clamp(7px, 2cqw, 12px);
+            border-width: 2px;
+        }
+
+        .palm-stack .btn i { font-size: clamp(13px, 3.2cqw, 19px); }
+
+        .palm-note {
+            margin: 0 clamp(12px, 4cqw, 30px) 0 0;
+            text-align: right;
+            color: var(--color-text);
+            opacity: 0.6;
+            font-size: clamp(12px, 2.3cqw, 15px);
+            line-height: 1.4;
+            white-space: nowrap;
+        }
+
+        /* ── Resume ── */
+        .resume-band {
+            background-color: var(--color-text);
+            padding: 43px 0 50px;
+            box-shadow: 0 0 0 100vmax var(--color-text);
+            clip-path: inset(0 -100vmax);
+        }
+
+        .resume-band-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 54px;
+        }
+
+        .resume-band-title {
+            font-family: var(--font-display);
+            font-size: clamp(22px, 3.5vw, 47px);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            color: #fff;
+            text-align: right;
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+
+        .resume-band-inner > p {
+            color: rgba(255,255,255,0.6);
+            font-size: 15px;
+            line-height: 1.6;
+            text-align: right;
+            margin: 0 0 0 auto;
+            max-width: 52ch;
+        }
+
+        .resume-section {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 50px 54px 90px;
+        }
+
+        /* letter-size (8.5 x 11) resume image */
+        .resume-img {
+            display: block;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            aspect-ratio: 8.5 / 11;
+            object-fit: contain;
+            background: #fff;
+            border-radius: 3px;
+        }
+
+        .resume-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 1150px) {
+            .about { gap: 36px; padding-left: 30px; padding-right: 30px; }
+        }
+
+        @media (max-width: 900px) {
+            .about {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 32px;
+                padding: 20px 20px 0;
+            }
+
+            .about-text { padding-bottom: 0; }
+
+            .about-photo {
+                justify-self: center;
+                width: 100%;
+                max-width: min(460px, 92vw);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content { padding: 76px 20px 20px; }
+            .resume-band-inner { padding: 0 20px; }
+            .resume-band-title { font-size: 36px; }
+            .resume-section { padding: 36px 20px 72px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .btn { transition: none; }
+            .btn:hover { transform: none; }
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background-color: var(--color-text) !important;
+            border-top: none;
+            padding: 13px 54px !important;
+        }
+
+        .footer-content {
+            flex-direction: row !important;
+            align-items: center;
+            justify-content: space-between;
+            max-width: none !important;
+            width: 100%;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.6) !important;
+            font-weight: 900 !important;
+            font-family: var(--font-display) !important;
+            white-space: nowrap;
+        }
+
+        .footer-icon-link { color: rgba(255,255,255,0.6) !important; }
+        .footer-icon-link:hover { color: white !important; }
+        .footer-icon { width: 20px; height: 20px; font-size: 20px !important; }
+        .footer-right { gap: 16px !important; flex-shrink: 0; }
+
+        @media (max-width: 768px) {
+            .footer { padding: 13px 20px !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="nav-name">lillian pulaski</div>
+            <div class="nav-links">
+                <a href="art.html" class="nav-link">art portfolio</a>
+                <a href="technical.html" class="nav-link">technical projects</a>
+                <a href="about.html" class="nav-link nav-link--active">about</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="name-container">
+                <div class="portfolio-title">about me</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <div class="about">
+
+        <div class="about-text">
+
+            <p class="about-lead">hi, i'm lillian</p>
+
+            <p>I studied financial economics at Binghamton University, with minors in graphic design and digital and data studies.</p>
+
+            <p>I work in finance in Boston now. On the side, I use my design skills to help nonprofits with web design and fundraising event promotional materials.</p>
+
+            <p>Outside of work, I'm usually throwing pottery, hiking or camping somewhere.</p>
+
+            <div class="about-links">
+                <a href="art.html" class="btn">
+                    <i class="fa-solid fa-pen-nib"></i><span>Art portfolio</span>
+                </a>
+                <a href="technical.html" class="btn">
+                    <i class="fa-solid fa-code"></i><span>Technical projects</span>
+                </a>
+            </div>
+
+        </div>
+
+        <figure class="about-photo">
+            <img src="photos/lillian-about.png" alt="Lillian Pulaski">
+            <div class="palm-stack">
+                <a href="https://github.com/lillian-pulaski" class="btn btn--big" target="_blank" rel="noopener">
+                    <i class="fab fa-github"></i><span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/lillian-pulaski/" class="btn btn--big" target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin"></i><span>LinkedIn</span>
+                </a>
+                <p class="palm-note">look at these</p>
+            </div>
+        </figure>
+
+    </div>
+
+    <!-- Resume -->
+    <div class="resume-band">
+        <div class="resume-band-inner">
+            <h2 class="resume-band-title">resume</h2>
+            <p>the official stuff</p>
+        </div>
+    </div>
+
+    <div class="resume-section">
+        <img src="photos/lillian-pulaski-resume.png" alt="Lillian Pulaski resume" class="resume-img">
+        <div class="resume-actions">
+            <a href="pdfs/lillian-pulaski-resume.pdf" class="btn" download>
+                <i class="fa-solid fa-download"></i><span>Download PDF</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <p class="footer-text">lillian pulaski 2026</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.linkedin.com/in/lillian-pulaski/" class="footer-link footer-icon-link" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin footer-icon"></i>
+                </a>
+                <a href="https://github.com/lillian-pulaski" class="footer-link footer-icon-link" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github footer-icon"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
