@@ -12,26 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
 
-        /* ── Hero ── */
-        .hero { min-height: 0; padding: 0; }
-
-        .hero-content {
-            padding: 90px 54px 29px;
-            width: 100%;
-        }
-
-        .name-container { margin-bottom: 0; }
-
-        .portfolio-title {
-            font-family: var(--font-display);
-            font-weight: 900;
-            font-size: clamp(28px, 5.5vw, 65px);
-            letter-spacing: -0.02em;
-            line-height: 1;
-            color: var(--color-text);
-            text-align: left;
-            margin: 0;
-        }
+        /* hero, portfolio-title and the footer come from style.css */
 
         /* ── Buttons ── */
         .btn {
@@ -83,7 +64,9 @@
         .about-photo img {
             width: 100%;
             height: 100%;
+            /* anchored above centre so the crop keeps the face in frame */
             object-fit: cover;
+            object-position: center 25%;
             display: block;
         }
 
@@ -111,6 +94,13 @@
             flex-wrap: wrap;
             gap: 10px;
             margin-top: 30px;
+        }
+
+        /* zero-height full-width item: forces everything after it
+           onto the next row, whatever the screen width */
+        .about-links-break {
+            flex-basis: 100%;
+            height: 0;
         }
 
         /* ── Resume ── */
@@ -165,6 +155,32 @@
             border-radius: 3px;
         }
 
+        /* stand-in shown until the resume image exists */
+        .resume-pending {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            aspect-ratio: 8.5 / 11;
+            padding: 24px;
+            background: #f1f3f9;
+            border-radius: 3px;
+        }
+
+        .resume-pending-title {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: clamp(18px, 2.4vw, 28px);
+            letter-spacing: 0;
+            line-height: 1.1;
+            color: #8a90ab;
+        }
+
         .resume-actions {
             display: flex;
             justify-content: center;
@@ -177,7 +193,7 @@
         }
 
         /* stack photo above text on small screens */
-        @media (max-width: 760px) {
+        @media (max-width: 768px) {
             .about {
                 grid-template-columns: minmax(0, 1fr);
                 gap: 28px;
@@ -185,10 +201,7 @@
             }
 
             .about-photo { max-width: 290px; }
-        }
 
-        @media (max-width: 768px) {
-            .hero-content { padding: 76px 20px 20px; }
             .resume-band-inner { padding: 0 20px; }
             .resume-band-title { font-size: 36px; }
             .resume-section { padding: 36px 20px 72px; }
@@ -197,39 +210,6 @@
         @media (prefers-reduced-motion: reduce) {
             .btn { transition: none; }
             .btn:hover { transform: none; }
-        }
-
-        /* ── Footer ── */
-        .footer {
-            background-color: var(--color-text) !important;
-            border-top: none;
-            padding: 13px 54px !important;
-        }
-
-        .footer-content {
-            flex-direction: row !important;
-            align-items: center;
-            justify-content: space-between;
-            max-width: none !important;
-            width: 100%;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-
-        .footer-text {
-            color: rgba(255,255,255,0.6) !important;
-            font-weight: 900 !important;
-            font-family: var(--font-display) !important;
-            white-space: nowrap;
-        }
-
-        .footer-icon-link { color: rgba(255,255,255,0.6) !important; }
-        .footer-icon-link:hover { color: white !important; }
-        .footer-icon { width: 20px; height: 20px; font-size: 20px !important; }
-        .footer-right { gap: 16px !important; flex-shrink: 0; }
-
-        @media (max-width: 768px) {
-            .footer { padding: 13px 20px !important; }
         }
     </style>
 </head>
@@ -241,7 +221,7 @@
             <div class="nav-name">lillian pulaski</div>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">art portfolio</a>
-                <a href="technical.html" class="nav-link">technical projects</a>
+                <a href="technical.html" class="nav-link">web and code</a>
                 <a href="about.html" class="nav-link nav-link--active">about</a>
             </div>
         </div>
@@ -267,19 +247,20 @@
 
             <p class="about-lead">hi, i'm lillian</p>
 
-            <p>I studied financial economics at Binghamton University, with minors in graphic design and digital and data studies.</p>
+            <p>I studied financial economics at Binghamton University, including minors in graphic design and digital and data studies. With a background in data analytics and coding as well as design and visual arts, I'm able to take a problem apart analytically and put it back together creatively.</p>
 
-            <p>I work in finance in Boston now. On the side, I use my design skills to help nonprofits with web design and fundraising event promotional materials.</p>
+            <p>I now work in finance in Boston. On the side I use my design skills to help nonprofits with web design and fundraising event promotional materials, and I keep a hand in physical art by throwing pottery.</p>
 
-            <p>Outside of work, I'm usually throwing pottery, hiking or camping somewhere.</p>
+            <p>Questions or a project in mind? Reach me at <a href="mailto:lpulaskidesign@gmail.com">lpulaskidesign@gmail.com</a>.</p>
 
             <div class="about-links">
                 <a href="index.html" class="btn">
                     <i class="fa-solid fa-pen-nib"></i><span>Art portfolio</span>
                 </a>
                 <a href="technical.html" class="btn">
-                    <i class="fa-solid fa-code"></i><span>Technical projects</span>
+                    <i class="fa-solid fa-code"></i><span>Web & code projects</span>
                 </a>
+                <div class="about-links-break"></div>
                 <a href="https://github.com/lillian-pulaski" class="btn" target="_blank" rel="noopener">
                     <i class="fab fa-github"></i><span>GitHub</span>
                 </a>
@@ -301,12 +282,22 @@
     </div>
 
     <div class="resume-section">
-        <img src="photos/lillian-pulaski-resume.png" alt="Lillian Pulaski resume" class="resume-img">
+
+        <img src="photos/lillian-pulaski-resume.png" alt="Lillian Pulaski resume" class="resume-img"
+             onerror="this.remove(); document.getElementById('resume-pending').hidden = false;">
+
+        <div class="resume-pending" id="resume-pending" hidden>
+            <div class="resume-pending-title">still working on it</div>
+        </div>
+
+        <!--
         <div class="resume-actions">
             <a href="pdfs/lillian-pulaski-resume.pdf" class="btn" download>
                 <i class="fa-solid fa-download"></i><span>Download PDF</span>
             </a>
         </div>
+        -->
+
     </div>
 
     <!-- Footer -->
