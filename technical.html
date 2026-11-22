@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>technical projects</title>
+    <title>web and code</title>
     <link rel="icon" href="photos/icon3.svg">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,229 +12,141 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
 
-        /* ── Hero ── */
-        .hero {
-            min-height: 0;
-            padding: 0;
-        }
+        /* hero, portfolio-title and the footer come from style.css */
 
-        .hero-content {
-            padding: 90px 54px 29px;
-            width: 100%;
-        }
-
-        .name-container { margin-bottom: 0; }
-
-        .portfolio-title {
-            font-family: var(--font-display);
-            font-weight: 900;
-            font-size: clamp(28px, 5.5vw, 65px);
-            letter-spacing: -0.02em;
-            line-height: 1;
-            color: var(--color-text);
-            text-align: left;
-            margin: 0;
-        }
-
-        /* ── Intro band (full-bleed) ── */
-        .intro-band {
+        /* ─────────────────────────────────────────
+           SECTION BANDS — full-bleed blue strips that
+           head each group, same pattern as the art page.
+        ───────────────────────────────────────── */
+        .band {
             background-color: var(--color-text);
             padding: 43px 0 50px;
             box-shadow: 0 0 0 100vmax var(--color-text);
             clip-path: inset(0 -100vmax);
         }
 
-        .intro-band-inner {
-            max-width: 1440px;
+        .band-inner {
+            /* matches the project column so the right edges line up */
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 54px;
         }
 
-        .intro-band-title {
+        .band-title {
             font-family: var(--font-display);
             font-size: clamp(22px, 3.5vw, 47px);
             font-weight: 900;
             letter-spacing: -0.02em;
             color: #fff;
             text-align: right;
-            margin-bottom: 12px;
+            margin: 0;
             line-height: 1;
         }
 
-        .intro-band-inner > p {
+        .band-inner > p {
             color: rgba(255,255,255,0.6);
             font-size: 15px;
             line-height: 1.6;
             text-align: right;
-            margin: 0 0 0 auto;
+            margin: 12px 0 0 auto;
             max-width: 52ch;
         }
 
-        /* ── Project list (accordion) ── */
+        /* ─────────────────────────────────────────
+           PROJECT LIST
+           Newest first inside each group. Title, then a
+           year + summary line, then the description.
+        ───────────────────────────────────────── */
         .index {
-            max-width: 1440px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 50px 54px 90px;
+            padding: 52px 54px 72px;
         }
 
-        .index-hint {
-            font-size: 13px;
-            color: var(--color-text);
-            opacity: 0.55;
-            margin: 0 0 14px;
-        }
+        /* the last group gets a little more room above the footer */
+        .index:last-of-type { padding-bottom: 90px; }
 
-        .proj {
-            background: #f1f3f9;
-            border-radius: 3px;
-            margin-bottom: 10px;
-            overflow: hidden;
-            transition: background-color 0.35s ease;
-        }
+        .entry { padding-bottom: 50px; }
 
-        .proj:hover { background: #e8ebf5; }
+        .entry:last-child { padding-bottom: 0; }
 
-        .proj.open,
-        .proj.open:hover { background: #e4e8f6; }
-
-        /* ── Row header / toggle button ── */
-        .proj-head {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto;
-            align-items: center;
-            gap: 18px;
-            width: 100%;
-            background: none;
-            border: 0;
-            padding: 22px 26px 24px;
-            margin: 0;
-            text-align: left;
-            cursor: pointer;
-            font: inherit;
-            color: var(--color-text);
-        }
-
-        .proj-head:focus-visible {
-            outline: 3px solid var(--color-text);
-            outline-offset: -3px;
-        }
-
-        /* date shows when a project is open */
-        .proj-date {
-            display: block;
+        .entry-title {
             font-family: var(--font-display);
             font-weight: 900;
-            font-size: 11px;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            opacity: 0;
-            max-height: 0;
-            margin-top: 0;
-            overflow: hidden;
-            transition: opacity 0.3s ease,
-                        max-height 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                        margin-top 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .proj.open .proj-date {
-            opacity: 0.5;
-            max-height: 22px;
-            margin-top: 10px;
-        }
-
-        .proj-title {
-            font-family: var(--font-display);
-            font-weight: 900;
-            font-size: clamp(23px, 3.4vw, 42px);
+            font-size: clamp(20px, 2.3vw, 27px);
             letter-spacing: -0.02em;
-            line-height: 1;
-            display: block;
-            transform-origin: left center;
-            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            line-height: 1.15;
+            color: var(--color-text);
+            margin: 0 0 7px;
         }
 
-        .proj-line {
-            display: block;
+        /* year · one-line summary */
+        .entry-meta {
             font-size: 14px;
             line-height: 1.5;
+            color: var(--color-text);
             opacity: 0.6;
-            margin-top: 8px;
-            max-width: 60ch;
+            margin: 0 0 14px;
+            max-width: 68ch;
         }
 
-        .proj-toggle {
+        .entry-meta .year {
             font-family: var(--font-display);
             font-weight: 900;
-            font-size: clamp(30px, 3vw, 40px);
-            line-height: 1;
-            transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            font-size: 12px;
+            letter-spacing: 0.1em;
         }
 
-        .proj.open .proj-toggle { transform: rotate(45deg); }
-
-        .proj:hover .proj-title { transform: translateX(8px); }
-        .proj:hover .proj-toggle { transform: scale(1.1); }
-        .proj.open:hover .proj-toggle { transform: rotate(45deg) scale(1.1); }
-
-        /* ── Project details ── */
-        .proj-body {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .proj-body-inner {
-            padding: 0 26px 28px;
-            max-width: 78ch;
-            color: var(--color-text);
-        }
-
-        .proj-desc {
+        .entry-desc {
             font-size: 14px;
-            line-height: 1.65;
-            margin: 0;
+            line-height: 1.7;
+            color: var(--color-text);
             opacity: 0.85;
+            margin: 0;
+            max-width: 72ch;
         }
 
-        .proj-list {
-            margin: 14px 0 0;
+        .entry-list {
+            margin: 12px 0 0;
             padding: 0;
             list-style: none;
             font-size: 13px;
-            line-height: 1.6;
+            line-height: 1.65;
+            color: var(--color-text);
             opacity: 0.75;
+            max-width: 72ch;
         }
 
-        .proj-list li {
+        .entry-list li {
             padding-left: 16px;
             position: relative;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
 
-        .proj-list li::before {
+        .entry-list li::before {
             content: '';
             position: absolute;
             left: 1px;
-            top: 0.52em;
-            width: 6px;
-            height: 6px;
+            top: 0.6em;
+            width: 5px;
+            height: 5px;
             border-radius: 50%;
             background: currentColor;
         }
 
         /* ── Tool chips ── */
-        .proj-tools {
+        .entry-tools {
             display: flex;
             flex-wrap: wrap;
             gap: 7px;
-            margin-top: 18px;
+            margin: 16px 0 0;
             padding: 0;
             list-style: none;
         }
 
         .tool {
             display: inline-block;
-            padding: 6px 13px;
+            padding: 5px 12px;
             border-radius: 999px;
             background: #fff;
             border: 1px solid rgba(102, 126, 234, 0.45);
@@ -247,18 +159,26 @@
         }
 
         /* ── Buttons ── */
-        .proj-actions {
+        .entry-actions {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-top: 22px;
+            margin-top: 18px;
+        }
+
+        .entry-note {
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--color-text);
+            opacity: 0.5;
+            margin: 12px 0 0;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 9px;
-            padding: 12px 24px;
+            padding: 11px 22px;
             border-radius: 999px;
             text-decoration: none;
             font-family: var(--font-display);
@@ -282,53 +202,22 @@
         }
 
         /* ── Mobile ── */
+        @media (max-width: 700px) {
+            .index { padding: 36px 20px 60px; }
+            .index:last-of-type { padding-bottom: 72px; }
+            .entry { padding-bottom: 42px; }
+        }
+
         @media (max-width: 768px) {
-            .hero-content { padding: 76px 20px 20px; }
-            .intro-band-inner { padding: 0 20px; }
-            .intro-band-title { font-size: 36px; }
-            .index { padding: 36px 20px 72px; }
-            .proj-head { padding: 18px 18px 20px; gap: 12px; }
-            .proj-body-inner { padding: 0 18px 22px; }
+            .band { padding: 34px 0 38px; }
+            .band-inner { padding: 0 20px; }
+            .band-title { font-size: 36px; }
             .btn { padding: 11px 20px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .proj, .proj-title, .proj-toggle, .proj-body, .proj-date, .btn { transition: none; }
-            .proj:hover .proj-title { transform: none; }
+            .btn { transition: none; }
             .btn:hover { transform: none; }
-        }
-
-        /* ── Footer ── */
-        .footer {
-            background-color: var(--color-text) !important;
-            border-top: none;
-            padding: 13px 54px !important;
-        }
-
-        .footer-content {
-            flex-direction: row !important;
-            align-items: center;
-            justify-content: space-between;
-            max-width: none !important;
-            width: 100%;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-
-        .footer-text {
-            color: rgba(255,255,255,0.6) !important;
-            font-weight: 900 !important;
-            font-family: var(--font-display) !important;
-            white-space: nowrap;
-        }
-
-        .footer-icon-link { color: rgba(255,255,255,0.6) !important; }
-        .footer-icon-link:hover { color: white !important; }
-        .footer-icon { width: 20px; height: 20px; font-size: 20px !important; }
-        .footer-right { gap: 16px !important; flex-shrink: 0; }
-
-        @media (max-width: 768px) {
-            .footer { padding: 13px 20px !important; }
         }
     </style>
 </head>
@@ -340,7 +229,7 @@
             <div class="nav-name">lillian pulaski</div>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">art portfolio</a>
-                <a href="technical.html" class="nav-link nav-link--active">technical projects</a>
+                <a href="technical.html" class="nav-link nav-link--active">web and code</a>
                 <a href="about.html" class="nav-link">about</a>
             </div>
         </div>
@@ -350,196 +239,145 @@
     <section class="hero">
         <div class="hero-content">
             <div class="name-container">
-                <div class="portfolio-title">technical projects</div>
+                <div class="portfolio-title">web and code</div>
             </div>
         </div>
     </section>
 
-    <!-- Intro band -->
-    <div class="intro-band">
-        <div class="intro-band-inner">
-            <h2 class="intro-band-title">coding, web design, and data</h2>
-            <p>
-                from school projects to beyond
-            </p>
+    <!-- ══ WEB DESIGN ══ -->
+    <div class="band">
+        <div class="band-inner">
+            <h2 class="band-title">web design</h2>
+            <p>visual design and the code behind it</p>
         </div>
     </div>
 
-    <!-- Projects -->
     <div class="index">
 
-        <!-- CMS -->
-        <article class="proj">
-            <button class="proj-head" aria-expanded="false" aria-controls="proj-cms">
-                <span>
-                    <span class="proj-title">open-source CMS display</span>
-                    <span class="proj-line">Digital signage for Raspberry Pi screens, built in Django</span>
-                    <span class="proj-date">2025</span>
-                </span>
-                <span class="proj-toggle" aria-hidden="true">+</span>
-            </button>
-            <div class="proj-body" id="proj-cms">
-                <div class="proj-body-inner">
-                    <p class="proj-desc">A full-stack Django application for running digital signage on Raspberry Pi displays. Administrators upload and schedule content of every kind, from images to announcements to live data, and the system rotates it through an automated slideshow.</p>
-                    <ul class="proj-list">
-                        <li>Role-based authentication separating admin and editor permissions</li>
-                        <li>Automated slideshow rotation with configurable timing and display control</li>
-                        <li>HDMI-CEC integration so the Pi powers the TV on and off on schedule</li>
-                        <li>Python scrapers pulling live weather and date/time onto the screen</li>
-                        <li>JSON API integration for outside sources, including campus announcements</li>
-                        <li>Validated image uploads managed through the database</li>
-                        <li>Support for custom HTML slides when a layout needs something specific</li>
-                    </ul>
-                    <ul class="proj-tools">
-                        <li class="tool">Django</li>
-                        <li class="tool">Python</li>
-                        <li class="tool">Raspberry Pi</li>
-                        <li class="tool">HDMI-CEC</li>
-                        <li class="tool">HTML / CSS</li>
-                    </ul>
-                    <div class="proj-actions">
-                        <a href="https://github.com/lillian-pulaski" class="btn" target="_blank" rel="noopener">
-                            <i class="fab fa-github"></i><span>Repository</span>
-                        </a>
-                        <a href="https://REPLACE-URL" class="btn" target="_blank" rel="noopener">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i><span>See it running</span>
-                        </a>
-                    </div>
-                </div>
+        
+
+        <!-- Portfolio site -->
+        <article class="entry">
+            <h3 class="entry-title">this portfolio site</h3>
+            <p class="entry-meta"><span class="year">2026</span> &nbsp;·&nbsp; Hand-coded, no framework, no site builder</p>
+            <p class="entry-desc">The site you're reading. Written by hand in HTML, CSS and JavaScript with no framework behind it. The type system, the full-bleed color bands and the layout on this page were all built from scratch.</p>
+            <ul class="entry-tools">
+                <li class="tool">HTML</li>
+                <li class="tool">CSS</li>
+                <li class="tool">JavaScript</li>
+            </ul>
+            <div class="entry-actions">
+                <a href="https://github.com/lillian-pulaski" class="btn" target="_blank" rel="noopener">
+                    <i class="fab fa-github"></i><span>Repository</span>
+                </a>
             </div>
         </article>
 
         <!-- Catholic Charities -->
-        <article class="proj">
-            <button class="proj-head" aria-expanded="false" aria-controls="proj-revamp">
-                <span>
-                    <span class="proj-title">catholic charities of broome county website</span>
-                    <span class="proj-line">A solo rebuild of a nonprofit's site, from brand to build</span>
-                    <span class="proj-date">2026</span>
-                </span>
-                <span class="proj-toggle" aria-hidden="true">+</span>
-            </button>
-            <div class="proj-body" id="proj-revamp">
-                <div class="proj-body-inner">
-                    <p class="proj-desc">A full revamp of an existing site for a Broome County nonprofit, handled solo from the brand work through to launch. The organization had no documented visual identity, so the project started by extracting one from what was already in use and developing a palette around it to carry that identity across the site. The rebuild focused on the things that actually keep people from finding help: navigation organized around the services offered, a layout that holds up on a phone, and clearer type and contrast throughout. Ticketing for the organization's fundraiser runs through the same site, and staff can update content without needing a developer.</p>
-                    <ul class="proj-tools">
-                        <li class="tool">Wix Studio</li>
-                    </ul>
-                    <div class="proj-actions">
-                        <a href="https://www.catholiccharitiesbc.org/" class="btn" target="_blank" rel="noopener">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i><span>Visit the site</span>
-                        </a>
-                    </div>
-                </div>
+        <article class="entry">
+            <h3 class="entry-title">catholic charities of broome county website</h3>
+            <p class="entry-meta"><span class="year">2026</span> &nbsp;·&nbsp; A solo rebuild of a nonprofit's site, from brand to build</p>
+            <p class="entry-desc">A full revamp of an existing site for a Broome County nonprofit, handled solo from the brand work through to launch. The organization had no documented visual identity, so the project started by extracting one from what was already in use and developing a palette around it to carry that identity across the site. The rebuild focused on the things that actually keep people from finding help: navigation organized around the services offered, a layout that holds up on a phone, and clearer type and contrast throughout. Ticketing for the organization's fundraiser runs through the same site, and staff can update content without needing a developer.</p>
+            <ul class="entry-tools">
+                <li class="tool">Wix Studio</li>
+            </ul>
+            <div class="entry-actions">
+                <a href="https://www.catholiccharitiesbc.org/" class="btn" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i><span>Visit the site</span>
+                </a>
             </div>
+            <p class="entry-note">Designed and built in 2026. Maintained and altered by the organization since launch.</p>
         </article>
 
         <!-- White Mountains -->
-        <article class="proj">
-            <button class="proj-head" aria-expanded="false" aria-controls="proj-wm">
-                <span>
-                    <span class="proj-title">white mountains travel guide</span>
-                    <span class="proj-line">A scroll-driven guide to hiking New Hampshire</span>
-                    <span class="proj-date">2025</span>
-                </span>
-                <span class="proj-toggle" aria-hidden="true">+</span>
-            </button>
-            <div class="proj-body" id="proj-wm">
-                <div class="proj-body-inner">
-                    <p class="proj-desc">An interactive single-page travel guide to New Hampshire's White Mountains, where the route unfolds as you scroll, with each section animating in and handing off to the next using JavaScript scroll libraries.</p>
-                    <ul class="proj-tools">
-                        <li class="tool">JavaScript</li>
-                        <li class="tool">HTML / CSS</li>
-                        <li class="tool">GSAP ScrollTrigger</li>
-                    </ul>
-                    <div class="proj-actions">
-                        <a href="https://github.com/lillian-pulaski" class="btn" target="_blank" rel="noopener">
-                            <i class="fab fa-github"></i><span>Repository</span>
-                        </a>
-                        <a href="https://lillian-pulaski.github.io/wmnf-scroll/" class="btn" target="_blank" rel="noopener">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i><span>Visit the site</span>
-                        </a>
-                    </div>
-                </div>
+        <article class="entry">
+            <h3 class="entry-title">white mountains travel guide</h3>
+            <p class="entry-meta"><span class="year">2025</span> &nbsp;·&nbsp; A scroll-driven guide to hiking New Hampshire</p>
+            <p class="entry-desc">An interactive single-page travel guide to New Hampshire's White Mountains, where the route unfolds as you scroll, with each section animating in and handing off to the next using JavaScript scroll libraries.</p>
+            <ul class="entry-tools">
+                <li class="tool">JavaScript</li>
+                <li class="tool">HTML / CSS</li>
+                <li class="tool">GSAP ScrollTrigger</li>
+            </ul>
+            <div class="entry-actions">
+                <a href="https://github.com/lillian-pulaski" class="btn" target="_blank" rel="noopener">
+                    <i class="fab fa-github"></i><span>Repository</span>
+                </a>
+                <a href="https://lillian-pulaski.github.io/wmnf-scroll/" class="btn" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i><span>Visit the site</span>
+                </a>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- ══ BACK END AND DATA ══ -->
+    <div class="band">
+        <div class="band-inner">
+            <h2 class="band-title">back end and data</h2>
+            <p>full-stack applications and analysis</p>
+        </div>
+    </div>
+
+    <div class="index">
+
+        <!-- CMS -->
+        <article class="entry">
+            <h3 class="entry-title">open-source CMS display</h3>
+            <p class="entry-meta"><span class="year">2025</span> &nbsp;·&nbsp; Digital signage for Raspberry Pi screens, built in Django</p>
+            <p class="entry-desc">A full-stack Django application for running digital signage on Raspberry Pi displays. Administrators upload and schedule content of every kind, from images to announcements to live data, and the system rotates it through an automated slideshow.</p>
+            <ul class="entry-list">
+                <li>Role-based authentication separating admin and editor permissions</li>
+                <li>Automated slideshow rotation with configurable timing and display control</li>
+                <li>HDMI-CEC integration so the Pi powers the TV on and off on schedule</li>
+                <li>Python scrapers pulling live weather and date/time onto the screen</li>
+                <li>JSON API integration for outside sources, including campus announcements</li>
+                <li>Validated image uploads managed through the database</li>
+                <li>Support for custom HTML slides when a layout needs something specific</li>
+            </ul>
+            <ul class="entry-tools">
+                <li class="tool">Django</li>
+                <li class="tool">Python</li>
+                <li class="tool">Raspberry Pi</li>
+                <li class="tool">HDMI-CEC</li>
+                <li class="tool">HTML / CSS</li>
+            </ul>
+            <div class="entry-actions">
+                <a href="https://github.com/lillian-pulaski" class="btn" target="_blank" rel="noopener">
+                    <i class="fab fa-github"></i><span>Repository</span>
+                </a>
             </div>
         </article>
 
         <!-- Gun mortality -->
-        <article class="proj">
-            <button class="proj-head" aria-expanded="false" aria-controls="proj-gun">
-                <span>
-                    <span class="proj-title">gun-related mortality analysis</span>
-                    <span class="proj-line">Where US gun deaths concentrated, 2012–2014</span>
-                    <span class="proj-date">2024</span>
-                </span>
-                <span class="proj-toggle" aria-hidden="true">+</span>
-            </button>
-            <div class="proj-body" id="proj-gun">
-                <div class="proj-body-inner">
-                    <p class="proj-desc">An analysis of gun-related deaths in the United States between 2012 and 2014, looking for the trends underneath the total: which populations carry the most risk, where deaths concentrate, and what those patterns suggest for violence-prevention policy.</p>
-                    <ul class="proj-tools">
-                        <li class="tool">Python</li>
-                        <li class="tool">Pandas</li>
-                    </ul>
-                    <div class="proj-actions">
-                        <a href="https://github.com/lillian-pulaski" class="btn" target="_blank" rel="noopener">
-                            <i class="fab fa-github"></i><span>Repository</span>
-                        </a>
-                    </div>
-                </div>
+        <article class="entry">
+            <h3 class="entry-title">gun-related mortality analysis</h3>
+            <p class="entry-meta"><span class="year">2024</span> &nbsp;·&nbsp; Where US gun deaths concentrated, 2012–2014</p>
+            <p class="entry-desc">An analysis of gun-related deaths in the United States between 2012 and 2014, looking for the trends underneath the total: which populations carry the most risk, where deaths concentrate, and what those patterns suggest for violence-prevention policy.</p>
+            <ul class="entry-tools">
+                <li class="tool">Python</li>
+                <li class="tool">Pandas</li>
+            </ul>
+            <div class="entry-actions">
+                <a href="https://github.com/lillian-pulaski" class="btn" target="_blank" rel="noopener">
+                    <i class="fab fa-github"></i><span>Repository</span>
+                </a>
             </div>
         </article>
 
         <!-- COVID voter registration -->
-        <article class="proj">
-            <button class="proj-head" aria-expanded="false" aria-controls="proj-covid">
-                <span>
-                    <span class="proj-title">covid-19 and voter registration</span>
-                    <span class="proj-line">What the 2020 pandemic did to new registrations</span>
-                    <span class="proj-date">2024</span>
-                </span>
-                <span class="proj-toggle" aria-hidden="true">+</span>
-            </button>
-            <div class="proj-body" id="proj-covid">
-                <div class="proj-body-inner">
-                    <p class="proj-desc">A comparison of new voter registration in 2020 against 2016, asking how a crisis changes participation, and what keeps registration from falling when the usual routes to it close.</p>
-                    <ul class="proj-tools">
-                        <li class="tool">Python</li>
-                        <li class="tool">Pandas</li>
-                    </ul>
-                    <div class="proj-actions">
-                        <a href="https://github.com/lillian-pulaski" class="btn" target="_blank" rel="noopener">
-                            <i class="fab fa-github"></i><span>Repository</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <!-- Portfolio site -->
-        <article class="proj">
-            <button class="proj-head" aria-expanded="false" aria-controls="proj-site">
-                <span>
-                    <span class="proj-title">this portfolio site</span>
-                    <span class="proj-line">Hand-coded, no framework, no site builder</span>
-                    <span class="proj-date">2026</span>
-                </span>
-                <span class="proj-toggle" aria-hidden="true">+</span>
-            </button>
-            <div class="proj-body" id="proj-site">
-                <div class="proj-body-inner">
-                    <p class="proj-desc">The site you're reading. Written by hand in HTML, CSS and JavaScript with no framework behind it. The type system, the full-bleed color bands and the click-to-expand pattern on this page were all built from scratch.</p>
-                    <ul class="proj-tools">
-                        <li class="tool">HTML</li>
-                        <li class="tool">CSS</li>
-                        <li class="tool">JavaScript</li>
-                    </ul>
-                    <div class="proj-actions">
-                        <a href="https://github.com/lillian-pulaski" class="btn" target="_blank" rel="noopener">
-                            <i class="fab fa-github"></i><span>Repository</span>
-                        </a>
-                    </div>
-                </div>
+        <article class="entry">
+            <h3 class="entry-title">covid-19 and voter registration</h3>
+            <p class="entry-meta"><span class="year">2024</span> &nbsp;·&nbsp; What the 2020 pandemic did to new registrations</p>
+            <p class="entry-desc">A comparison of new voter registration in 2020 against 2016, asking how a crisis changes participation, and what keeps registration from falling when the usual routes to it close.</p>
+            <ul class="entry-tools">
+                <li class="tool">Python</li>
+                <li class="tool">Pandas</li>
+            </ul>
+            <div class="entry-actions">
+                <a href="https://github.com/lillian-pulaski" class="btn" target="_blank" rel="noopener">
+                    <i class="fab fa-github"></i><span>Repository</span>
+                </a>
             </div>
         </article>
 
