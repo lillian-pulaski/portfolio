@@ -1,3 +1,10 @@
+/* =========================================================
+   lillian pulaski — shared styles
+   Loaded by index.html, technical.html, about.html and the
+   project pages. Page-specific layout lives in each page's
+   own <style> block.
+   ========================================================= */
+
 /* ── Reset ── */
 * {
     margin: 0;
@@ -73,10 +80,11 @@ body {
 
 .nav-link--active { color: var(--color-text-secondary) !important; }
 
-/* ── Hero ── */
+/* ── Page header ──
+   Every page sets its own padding; these are the shared bits. */
 .hero {
     position: relative;
-    min-height: 100vh;
+    min-height: 0;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -86,57 +94,11 @@ body {
     position: relative;
     z-index: 2;
     text-align: left;
-    padding: 54px 36px;
+    padding: 90px 54px 29px;
+    width: 100%;
 }
 
-.name-container { margin-bottom: 16px; }
-
-.name {
-    font-family: var(--font-display);
-    font-weight: 900;
-    line-height: 0.85;
-    letter-spacing: -0.02em;
-}
-
-.index-name { text-align: right; }
-
-.name-line {
-    display: block;
-    font-size: clamp(72px, 16vw, 200px);
-}
-
-.name-line.highlight {
-    background-color: var(--color-text);
-    color: var(--color-bg);
-    display: block;
-    box-sizing: border-box;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    width: 100vw;
-    padding-left: 36px;
-    text-align: left;
-}
-
-.subtitle-wrapper { margin-top: 36px; }
-
-.subtitle {
-    font-size: 22px;
-    letter-spacing: 0.2em;
-    color: var(--color-text);
-    margin-bottom: 8px;
-    font-weight: 500;
-    text-align: center;
-}
-
-.subtitle-secondary {
-    font-size: 13px;
-    letter-spacing: 0.15em;
-    color: var(--color-text-secondary);
-    font-weight: 400;
-}
+.name-container { margin-bottom: 0; }
 
 .portfolio-title {
     font-family: var(--font-display);
@@ -146,152 +108,90 @@ body {
     line-height: 1;
     color: var(--color-text);
     text-align: left;
-    margin-top: 0;
+    margin: 0;
 }
 
-/* ── Work grid ── */
-.featured {
-    padding: 108px 54px;
-    max-width: 1440px;
-    margin: 0 auto;
+/* ── Links inside body copy ──
+   :not(.btn) so this never touches the pill buttons, which set
+   their own white text. */
+.about-text a:not(.btn) {
+    color: var(--color-text);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.25s ease;
 }
 
-.section-header { margin-bottom: 72px; }
+.about-text a:not(.btn):hover { opacity: 0.7; }
 
-.section-title {
-    font-size: 13px;
-    letter-spacing: 0.2em;
-    color: var(--color-text-secondary);
-    margin-bottom: 18px;
-    font-weight: 500;
+/* ── Footer ──
+   Blue by default, so pages don't have to override it. */
+.footer {
+    background-color: var(--color-text);
+    padding: 13px 54px;
 }
-
-.section-line {
-    width: 90px;
-    height: 1px;
-    background: var(--color-text);
-}
-
-.work-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 27px;
-}
-
-.work-item { grid-column: span 4; transition: opacity 0.3s ease; }
-.work-item:hover { opacity: 0.7; }
-.work-item.large { grid-column: span 8; }
-.work-item.wide  { grid-column: span 6; }
-
-.work-image-strip {
-    display: flex;
-    gap: 9px;
-    overflow-x: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-text) transparent;
-    margin-bottom: 22px;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 6px;
-}
-
-.work-image-strip::-webkit-scrollbar { height: 4px; }
-.work-image-strip::-webkit-scrollbar-track { background: transparent; }
-.work-image-strip::-webkit-scrollbar-thumb { background: var(--color-text-secondary); border-radius: 0; }
-.work-image-strip::-webkit-scrollbar-thumb:hover { background: var(--color-text); }
-
-.work-image {
-    flex: 0 0 auto;
-    width: 200px;
-    aspect-ratio: 3 / 4;
-    overflow: hidden;
-    background: var(--color-bg);
-}
-
-.work-image-strip:has(> :only-child) > .work-image {
-    width: 100%;
-    flex: 1 1 auto;
-}
-
-.work-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-.image-placeholder {
-    width: 100%;
-    height: 100%;
-    background: var(--color-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.placeholder-text {
-    font-size: 13px;
-    letter-spacing: 0.2em;
-    color: var(--color-text-secondary);
-}
-
-.work-info { padding: 0 4px; }
-.work-title { font-size: 22px; font-weight: 700; margin-bottom: 7px; }
-.work-category { font-size: 11px; letter-spacing: 0.1em; color: var(--color-text-secondary); }
-
-/* ── Footer ── */
-.footer { padding: 14px 54px; }
 
 .footer-content {
-    max-width: 1440px;
-    margin: 0 auto;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
 }
 
 .footer-left { display: flex; flex-direction: column; gap: 7px; }
 
-.footer-text { font-size: 11px; letter-spacing: 0.1em; color: var(--color-bg); }
+.footer-text {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
+}
 
-.footer-right { display: flex; gap: 36px; flex-shrink: 0; }
+.footer-right { display: flex; gap: 16px; flex-shrink: 0; }
 
-.footer-link { font-size: 11px; letter-spacing: 0.15em; color: var(--color-bg); text-decoration: none; transition: color 0.3s ease; }
-.footer-link:hover { color: var(--color-text-secondary); }
+.footer-link {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover { color: #fff; }
 
 .footer-icon-link {
     font-size: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-text);
+    color: rgba(255, 255, 255, 0.6);
     transition: color 0.3s ease;
 }
 
-.footer-icon-link:hover { color: var(--color-text-secondary); }
-.footer-icon { width: 20px; height: 20px; }
+.footer-icon-link:hover { color: #fff; }
 
-/* ── Responsive ── */
-@media (max-width: 1200px) {
-    .work-grid { grid-template-columns: repeat(8, 1fr); }
-    .work-item { grid-column: span 4; }
-    .work-item.large,
-    .work-item.wide { grid-column: span 8; }
+.footer-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
 }
 
+/* ── Responsive ── */
 @media (max-width: 768px) {
     .nav { padding: 14px 20px; }
     .nav-name { font-size: 14px; }
     .nav-links { gap: 20px; }
     .nav-link { font-size: 14px; }
-    .name-line { font-size: clamp(44px, 12vw, 110px); }
-    .name-line.highlight { padding-left: 20px; }
-    .subtitle { font-size: 15px; }
-    .subtitle-secondary { font-size: 11px; }
-    .featured { padding: 72px 27px; }
-    .work-grid { grid-template-columns: 1fr; gap: 36px; }
-    .work-item,
-    .work-item.large,
-    .work-item.wide { grid-column: span 1; }
-    .work-image { width: 144px; }
-    .work-image-strip:has(> :only-child) > .work-image { width: 100%; }
+
+    .hero-content { padding: 76px 20px 20px; }
 
     /* footer: always one row */
-    .footer { padding: 12px 20px !important; }
-    .footer-content { flex-direction: row !important; align-items: center; gap: 12px; }
-    .footer-right { gap: 14px !important; }
+    .footer { padding: 13px 20px; }
+    .footer-right { gap: 14px; }
 }
