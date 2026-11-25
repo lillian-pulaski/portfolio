@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ok computer cd — lillian pulaski</title>
+    <title>ok computer cd package</title>
     <link rel="icon" href="../photos/icon3.svg">
     <link rel="stylesheet" href="../style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,14 +12,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
 
+        /* ── Blue banner ── */
         .project-banner {
             background-color: var(--color-text);
-            padding: 120px 60px 64px;
+            padding: 120px 0 64px;
         }
 
         .project-banner-inner {
-            max-width: 1600px;
+            max-width: 1440px;
             margin: 0 auto;
+            padding: 0 54px;
         }
 
         .back-link {
@@ -47,110 +49,141 @@
             flex-shrink: 0;
         }
 
-        .project-title {
-            font-family: var(--font-display);
-            font-size: clamp(40px, 8vw, 96px);
-            font-weight: 900;
-            letter-spacing: -0.02em;
-            line-height: 0.95;
-            color: #fff;
-            margin-bottom: 24px;
-        }
-
-        .project-desc {
-            font-size: 16px;
-            color: rgba(255,255,255,0.7);
-            max-width: 560px;
-            line-height: 1.65;
-        }
-
         .project-date {
             font-family: var(--font-display);
             font-size: 11px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: rgba(255,255,255,0.5);
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
-        .strip-section {
-            max-width: 1600px;
+        .project-title {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 7vw, 82px);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 0.95;
+            color: #fff;
+            margin-bottom: 22px;
+        }
+
+        .project-desc {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            max-width: 62ch;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* ─────────────────────────────────────────
+           GALLERY
+           Grids instead of side-scrolling strips, so
+           nothing is hidden off the right edge.
+        ───────────────────────────────────────── */
+        .section {
+            max-width: 1440px;
             margin: 0 auto;
-            padding: 56px 0 0;
+            padding: 56px 54px 0;
         }
 
-        .strip-section:last-of-type {
-            padding-bottom: 100px;
-        }
+        .section:last-of-type { padding-bottom: 96px; }
 
-        .strip-label-line {
+        /* label with a rule running off to the right */
+        .section-label {
             display: flex;
             align-items: center;
             gap: 16px;
-            padding: 0 60px;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
-        .strip-label-line span {
+        .section-label span {
             font-family: var(--font-display);
             font-size: 11px;
             letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: var(--color-text-secondary);
+            color: var(--color-text);
+            opacity: 0.5;
             white-space: nowrap;
         }
 
-        .strip-label-line::after {
+        .section-label::after {
             content: '';
             display: block;
             flex: 1;
             height: 1px;
-            background: var(--color-text-secondary);
-            opacity: 0.25;
+            background: var(--color-text);
+            opacity: 0.2;
         }
 
-        .img-strip {
-            display: flex;
-            gap: 16px;
-            overflow-x: auto;
-            padding: 0 60px 16px;
-            /* hide scrollbar in all browsers */
-            scrollbar-width: none;
-            -ms-overflow-style: none;
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            align-items: start;
         }
 
-        .img-strip::-webkit-scrollbar {
-            display: none;
-        }
+        .gallery figure { margin: 0; }
 
-        .strip-img {
-            flex: 0 0 auto;
-            height: 460px;
-            width: auto;
-            overflow: hidden;
-            cursor: default;
-        }
-
-        .strip-img img {
-            height: 100%;
-            width: auto;
+        .gallery img {
+            width: 100%;
             display: block;
+            border-radius: 3px;
         }
 
-        .footer { background-color: var(--color-text) !important; border-top: none; padding: 14px 60px !important; }
-        .footer-text { color: rgba(255,255,255,0.6) !important; font-weight: 900 !important; font-family: var(--font-display) !important; }
-        .footer-icon-link { color: rgba(255,255,255,0.6) !important; }
-        .footer-icon-link:hover { color: white !important; }
-        .footer-icon { width: 20px; height: 20px; font-size: 20px !important; }
-        .footer-right { gap: 16px !important; }
+        /* photographs: matched crop so the row sits level */
+        .gallery--photos img {
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+
+        /* flat artwork: one row, every image set to the same
+           height so the tops and bottoms line up. Widths follow
+           each file's own proportions, and the shared height is
+           tied to the viewport so the row always fits. */
+        .gallery--files {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .gallery--files figure { flex: 0 0 auto; }
+
+        .gallery--files img {
+            height: clamp(180px, 26vw, 400px);
+            width: auto;
+            max-width: 100%;
+        }
+
+        figcaption {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--color-text);
+            opacity: 0.5;
+            margin-top: 9px;
+        }
+
+        /* ── Footer ── */
+        .footer { padding: 14px 54px !important; }
 
         @media (max-width: 768px) {
-            .project-banner             { padding: 100px 30px 48px; }
-            .strip-section              { padding-top: 40px; }
-            .strip-section:last-of-type { padding-bottom: 72px; }
-            .strip-label-line,
-            .img-strip                  { padding-left: 30px; padding-right: 30px; }
-            .strip-img                  { height: 280px; }
+            .project-banner { padding: 100px 0 48px; }
+            .project-banner-inner { padding: 0 20px; }
+            .section { padding: 40px 20px 0; }
+            .section:last-of-type { padding-bottom: 72px; }
+            .gallery { gap: 14px; }
+
+            .gallery--files {
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            .gallery--files img { height: auto; width: 100%; }
+            .footer { padding: 13px 20px !important; }
         }
     </style>
 </head>
@@ -171,48 +204,50 @@
     <!-- Blue banner -->
     <div class="project-banner">
         <div class="project-banner-inner">
-            <a href="../gd.html" class="back-link">
+            <a href="../index.html" class="back-link">
                 <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-                back to graphic design
+                back to portfolio
             </a>
-            <h1 class="project-title">ok computer cd case</h1>
-            <p class="project-date">MARCH 2025</p>
-            <p class="project-desc">A full CD package redesign for Radiohead's including a jewel case, foldable poster, and disc art exploring the album's themes of technology and alienation.</p>
+            <p class="project-date">March 2025</p>
+            <h1 class="project-title">ok computer cd package</h1>
+            <p class="project-desc">A full CD package redesign for Radiohead's OK Computer, including a jewel case, foldable poster, and disc art exploring the album's themes of technology, repetitiveness, and alienation.</p>
         </div>
     </div>
 
-
-    <!-- Strip 2: Prototype / product photos -->
-    <div class="strip-section">
-        <div class="img-strip">
-            <div class="strip-img">
-                <img src="../photos/cd-side.jpg" alt="Ok Computer CD Side">
-            </div>
-            <div class="strip-img">
-                <img src="../photos/cd-inside.jpg" alt="Ok Computer CD Interior">
-            </div>
-            <div class="strip-img">
-                <img src="../photos/cd-cover.jpg" alt="Ok Computer CD Front">
-            </div>
+    <!-- Prototype -->
+    <div class="section">
+        <div class="section-label"><span>prototype</span></div>
+        <div class="gallery gallery--photos">
+            <figure>
+                <img src="../photos/cd-cover.jpg" alt="Finished CD package, front">
+            </figure>
+            <figure>
+                <img src="../photos/cd-inside.jpg" alt="Finished CD package, open">
+            </figure>
+            <figure>
+                <img src="../photos/cd-side.jpg" alt="Finished CD package, spine">
+            </figure>
         </div>
     </div>
 
-    <!-- Strip 1: Design files -->
-    <div class="strip-section">
-        <div class="img-strip">
-            <div class="strip-img">
-                <img src="../photos/okcd_poster.png" alt="Ok Computer CD Poster">
-            </div>
-            <div class="strip-img">
-                <img src="../photos/lpulaski_okcd_FRONT.jpg" alt="CD Cover Front">
-            </div>
-            <div class="strip-img">
-                <img src="../photos/okcd_BACK+SIDES.png" alt="CD Back and Sides">
-            </div>
+    <!-- Design files -->
+    <div class="section">
+        <div class="section-label"><span>design files</span></div>
+        <div class="gallery gallery--files">
+            <figure>
+                <img src="../photos/okcd_poster.png" alt="Foldable poster artwork">
+                <figcaption>poster</figcaption>
+            </figure>
+            <figure>
+                <img src="../photos/lpulaski_okcd_FRONT.jpg" alt="Front cover artwork">
+                <figcaption>front cover</figcaption>
+            </figure>
+            <figure>
+                <img src="../photos/okcd_BACK+SIDES.png" alt="Back cover and spine artwork">
+                <figcaption>back cover and sides</figcaption>
+            </figure>
         </div>
     </div>
-
-    
 
     <!-- Footer -->
     <footer class="footer">
@@ -221,7 +256,7 @@
                 <p class="footer-text">lillian pulaski 2026</p>
             </div>
             <div class="footer-right">
-                <a href="https://www.linkedin.com/in/lillian-pulaski-b7491a246/" class="footer-link footer-icon-link" target="_blank" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/lillian-pulaski/" class="footer-link footer-icon-link" target="_blank" aria-label="LinkedIn">
                     <i class="fab fa-linkedin footer-icon"></i>
                 </a>
                 <a href="https://github.com/lillian-pulaski" class="footer-link footer-icon-link" target="_blank" aria-label="GitHub">
